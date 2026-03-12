@@ -46,6 +46,7 @@
     font-size: 1.5rem;
     color: var(--amber-light);
     letter-spacing: -0.5px;
+    text-decoration: none;
   }
   .nav-logo span { color: #fff; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -880,7 +881,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Minha <span>Mão de Obra</span></div>
+  <a href="index.html" class="nav-logo">Minha <span>Mão de Obra</span></a>
   <ul class="nav-links">
     <li><a href="#categorias">Categorias</a></li>
     <li><a href="#profissionais">Profissionais</a></li>
@@ -890,7 +891,11 @@
     <li><a href="#planos">Planos</a></li>
     <li><a href="#avaliacoes">Avaliações</a></li>
   </ul>
-  <button class="btn-nav" onclick="location.href='cadastro.html'">Cadastre-se Grátis</button>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="privacidade.html" style="color:rgba(255,255,255,0.4);font-size:0.78rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">🔒 Privacidade</a>
+    <button class="btn-nav" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.65);font-weight:500;" onclick="location.href='admin.html'">Entrar</button>
+    <button class="btn-nav" onclick="location.href='cadastro.html'">Cadastre-se Grátis</button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1487,7 +1492,7 @@
         <li class="feat no">✗ Sem posição nº1 garantida</li>
         <li class="feat no">✗ Sem gerente de conta</li>
       </ul>
-      <button class="btn-plan btn-plan-primary">Assinar Pro</button>
+      <button class="btn-plan btn-plan-primary" onclick="location.href='pagamento.html?plano=pro'">Assinar Pro</button>
     </div>
 
     <!-- Premium -->
@@ -1511,7 +1516,7 @@
         <li class="feat ok">✓ Relatórios avançados</li>
         <li class="feat ok">✓ Impulsionamento em redes sociais</li>
       </ul>
-      <button class="btn-plan btn-plan-dark">Assinar Premium</button>
+      <button class="btn-plan btn-plan-dark" onclick="location.href='pagamento.html?plano=premium'">Assinar Premium</button>
     </div>
 
   </div>
@@ -1911,6 +1916,38 @@
   // Se já aceitou antes, esconde o aviso
   if(localStorage.getItem('notice-accepted')) {
     document.getElementById('notice-bar').classList.add('hidden');
+  }
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="
+  position:fixed; bottom:0; left:0; right:0; z-index:999;
+  background:var(--dark); border-top:1px solid rgba(224,123,47,0.3);
+  padding:16px 5%; display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  transform:translateY(0); transition:transform 0.4s;
+">
+  <span style="font-size:1.2rem">🍪</span>
+  <p style="flex:1;font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.6;min-width:220px">
+    Usamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa
+    <a href="privacidade.html" style="color:var(--amber-light);text-decoration:none;font-weight:600">Política de Privacidade</a>
+    e os <a href="privacidade.html" style="color:var(--amber-light);text-decoration:none;font-weight:600">Termos de Uso</a>.
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0">
+    <button onclick="rejectCookies()" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45);padding:9px 18px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer">Só essenciais</button>
+    <button onclick="acceptCookies()" style="background:var(--amber);color:#fff;border:none;padding:9px 22px;border-radius:100px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer">✓ Aceitar todos</button>
+  </div>
+</div>
+
+<script>
+  // Cookie banner
+  function acceptCookies() {
+    localStorage.setItem('cookies-consent', 'accepted');
+    document.getElementById('cookie-banner').style.transform = 'translateY(110%)';
+  }
+  function rejectCookies() {
+    localStorage.setItem('cookies-consent', 'essential');
+    document.getElementById('cookie-banner').style.transform = 'translateY(110%)';
+  }
+  if (localStorage.getItem('cookies-consent')) {
+    document.getElementById('cookie-banner').style.transform = 'translateY(110%)';
   }
 </script>
 
