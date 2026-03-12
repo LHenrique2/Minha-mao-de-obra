@@ -949,6 +949,16 @@ function submitForm() {
     alert('Por favor, confirme que você não é um robô marcando o reCAPTCHA.');
     return;
   }
+  // Se escolheu plano pago, redireciona para pagamento
+  if (selectedPlano === 'pro') {
+    location.href = 'pagamento.html?plano=pro';
+    return;
+  }
+  if (selectedPlano === 'premium') {
+    location.href = 'pagamento.html?plano=premium';
+    return;
+  }
+  // Plano gratuito — mostra tela de sucesso
   document.querySelectorAll('.form-page').forEach(p => { p.style.display = 'none'; p.classList.remove('active'); });
   document.getElementById('steps-nav').style.display = 'none';
   document.querySelector('.progress-wrap').style.display = 'none';
