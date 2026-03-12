@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Mão de Obra — Profissionais Especializados</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --amber: #E07B2F;
+    --amber-light: #F5A25A;
+    --dark: #1A1208;
+    --dark-mid: #2C1F0E;
+    --cream: #FAF5EC;
+    --cream-mid: #F0E6D0;
+    --text: #3D2B10;
+    --muted: #8A6E4A;
+    --green: #4A7C59;
+    --green-light: #6BAF81;
+    --star: #E8B84B;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,18,8,0.92);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+    border-bottom: 1px solid rgba(224,123,47,0.25);
+  }
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    color: var(--amber-light);
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: #fff; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--amber-light); }
+  .btn-nav {
+    background: var(--amber);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-nav:hover { background: var(--amber-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(224,123,47,0.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(224,123,47,0.18);
+    border: 1px solid rgba(224,123,47,0.4);
+    color: var(--amber-light);
+    font-size: 0.8rem; font-weight: 600;
+    padding: 6px 16px; border-radius: 100px;
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.8rem, 7vw, 5.2rem);
+    color: #fff;
+    line-height: 1.1;
+    max-width: 800px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--amber-light);
+  }
+  .hero p {
+    margin-top: 20px;
+    color: rgba(255,255,255,0.55);
+    font-size: 1.1rem;
+    max-width: 520px;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-search {
+    margin-top: 40px;
+    display: flex; gap: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    padding: 8px 8px 8px 24px;
+    width: 100%; max-width: 600px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-search input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: #fff; font-family: 'DM Sans', sans-serif; font-size: 1rem;
+  }
+  .hero-search input::placeholder { color: rgba(255,255,255,0.35); }
+  .btn-search {
+    background: var(--amber);
+    color: #fff; border: none;
+    padding: 12px 28px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .btn-search:hover { background: var(--amber-light); transform: translateY(-1px); }
+  .hero-stats {
+    margin-top: 60px;
+    display: flex; gap: 48px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem; color: var(--amber-light);
+    display: block;
+  }
+  .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+  /* ── CATEGORIES ── */
+  .section { padding: 80px 5%; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--dark); line-height: 1.2;
+    margin-bottom: 40px;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
+  }
+  .cat-card {
+    background: #fff;
+    border: 1.5px solid var(--cream-mid);
+    border-radius: 16px;
+    padding: 22px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .cat-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(224,123,47,0.15);
+  }
+  .cat-card.active {
+    background: var(--dark);
+    border-color: var(--dark);
+    color: #fff;
+  }
+  .cat-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+  .cat-name { font-weight: 600; font-size: 0.85rem; }
+  .cat-count { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+  .cat-card.active .cat-count { color: rgba(255,255,255,0.5); }
+
+  /* ── PROFESSIONALS GRID ── */
+  .pros-section { background: var(--cream-mid); padding: 80px 5%; }
+  .section-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 40px; flex-wrap: wrap; gap: 16px;
+  }
+  .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 8px 18px; border-radius: 100px;
+    border: 1.5px solid var(--cream-mid);
+    background: #fff; color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--dark); color: #fff; border-color: var(--dark);
+  }
+
+  .pros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .pro-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+    position: relative;
+  }
+  .pro-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(26,18,8,0.12);
+  }
+  .pro-card-img {
+    width: 100%; height: 200px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, var(--cream-mid), var(--amber-light));
+    position: relative;
+  }
+  .pro-img-placeholder {
+    width: 100%; height: 200px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    background: linear-gradient(135deg, #f0e6d0, #fad5ad);
+  }
+  .badge-avail {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--green);
+    color: #fff; font-size: 0.7rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 100px;
+    letter-spacing: 0.5px;
+  }
+  .badge-featured {
+    position: absolute; top: 14px; right: 14px;
+    background: var(--amber);
+    color: #fff; font-size: 0.7rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 100px;
+  }
+  .pro-card-body { padding: 20px; }
+  .pro-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .pro-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--dark);
+  }
+  .pro-role {
+    font-size: 0.8rem; color: var(--muted);
+    margin-top: 2px;
+  }
+  .pro-price {
+    text-align: right;
+  }
+  .price-val {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem; color: var(--amber);
+    font-weight: 700;
+    display: block;
+  }
+  .price-label { font-size: 0.72rem; color: var(--muted); }
+
+  .stars { display: flex; align-items: center; gap: 4px; margin-top: 12px; }
+  .star { color: var(--star); font-size: 0.9rem; }
+  .rating-num { font-weight: 700; font-size: 0.9rem; margin-left: 2px; }
+  .review-count { font-size: 0.78rem; color: var(--muted); margin-left: 4px; }
+
+  .pro-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .tag {
+    background: var(--cream); color: var(--text);
+    font-size: 0.72rem; font-weight: 500;
+    padding: 4px 10px; border-radius: 100px;
+    border: 1px solid var(--cream-mid);
+  }
+
+  .pro-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid var(--cream-mid);
+  }
+  .pro-location { font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+  .btn-contact {
+    background: var(--dark);
+    color: #fff; border: none;
+    padding: 10px 20px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-contact:hover { background: var(--amber); }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { padding: 80px 5%; background: var(--dark); }
+  .how-section .section-title { color: #fff; }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px; margin-top: 50px;
+  }
+  .step {
+    text-align: center; padding: 30px 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .step:hover { border-color: var(--amber); transform: translateY(-4px); }
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-size: 3.5rem; color: rgba(224,123,47,0.2);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .step-icon { font-size: 2.2rem; margin-bottom: 14px; }
+  .step h3 {
+    font-family: 'Fraunces', serif;
+    color: #fff; font-size: 1.1rem; margin-bottom: 10px;
+  }
+  .step p { color: rgba(255,255,255,0.45); font-size: 0.85rem; line-height: 1.6; }
+
+  /* ── REVIEWS ── */
+  .reviews-section { padding: 80px 5%; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px; margin-top: 40px;
+  }
+  .review-card {
+    background: #fff;
+    border-radius: 18px; padding: 26px;
+    border: 1.5px solid var(--cream-mid);
+    transition: box-shadow 0.25s;
+  }
+  .review-card:hover { box-shadow: 0 10px 30px rgba(26,18,8,0.08); }
+  .review-stars { color: var(--star); font-size: 1rem; margin-bottom: 14px; }
+  .review-text {
+    font-size: 0.92rem; line-height: 1.7; color: var(--text);
+    font-style: italic; margin-bottom: 18px;
+  }
+  .reviewer {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .reviewer-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--amber-light), var(--amber));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .reviewer-name { font-weight: 700; font-size: 0.88rem; }
+  .reviewer-service { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--amber);
+    padding: 80px 5%;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--dark); margin-bottom: 16px;
+  }
+  .cta-section p { color: rgba(26,18,8,0.65); font-size: 1rem; margin-bottom: 32px; }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-cta-dark {
+    background: var(--dark); color: #fff;
+    border: none; padding: 14px 32px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    cursor: pointer; transition: transform 0.2s, opacity 0.2s;
+  }
+  .btn-cta-dark:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-cta-outline {
+    background: transparent;
+    border: 2px solid var(--dark);
+    color: var(--dark);
+    padding: 14px 32px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .btn-cta-outline:hover { background: rgba(26,18,8,0.1); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 60px 5% 30px;
+    color: rgba(255,255,255,0.45);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 50px;
+  }
+  .footer-brand h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem; color: var(--amber-light); margin-bottom: 12px;
+  }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 260px; }
+  .footer-col h4 {
+    color: #fff; font-size: 0.85rem; font-weight: 700;
+    margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a {
+    color: rgba(255,255,255,0.45); text-decoration: none;
+    font-size: 0.85rem; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--amber-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; flex-wrap: wrap; gap: 12px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── FREE SECTION ── */
+  .free-section {
+    padding: 80px 5%;
+    background: var(--dark-mid);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .free-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+  }
+  .free-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: #fff; line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .free-title em { font-style: italic; color: var(--green-light); }
+  .free-sub { color: rgba(255,255,255,0.4); font-size: 0.95rem; margin-bottom: 32px; }
+
+  .free-list { list-style: none; display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px; }
+  .free-list li { display: flex; align-items: flex-start; gap: 16px; }
+  .free-icon {
+    font-size: 1.5rem; flex-shrink: 0;
+    background: rgba(255,255,255,0.06);
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .free-list li div { display: flex; flex-direction: column; gap: 3px; }
+  .free-list li strong { color: #fff; font-size: 0.95rem; }
+  .free-list li span { color: rgba(255,255,255,0.4); font-size: 0.82rem; line-height: 1.5; }
+
+  .free-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn-free-main {
+    background: var(--green);
+    color: #fff; border: none;
+    padding: 15px 30px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    cursor: pointer; transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+  .btn-free-main:hover { background: var(--green-light); transform: translateY(-2px); }
+  .free-nota { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+  .free-nota strong { color: var(--amber-light); }
+
+  /* Card preview */
+  .free-right { display: flex; flex-direction: column; gap: 16px; }
+  .free-card-preview {
+    background: #fff;
+    border-radius: 24px;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  }
+  .fcp-badge {
+    display: inline-block;
+    background: var(--green); color: #fff;
+    font-size: 0.7rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 100px;
+    margin-bottom: 16px;
+  }
+  .fcp-avatar {
+    font-size: 3.5rem; text-align: center;
+    background: linear-gradient(135deg, #f0e6d0, #fad5ad);
+    border-radius: 16px; padding: 16px;
+    margin-bottom: 14px;
+  }
+  .fcp-name { font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--dark); font-weight: 700; }
+  .fcp-role { font-size: 0.82rem; color: var(--muted); margin-bottom: 10px; }
+  .fcp-stars { color: var(--star); font-size: 0.9rem; margin-bottom: 12px; }
+  .fcp-stars span { font-weight: 700; color: var(--dark); margin-left: 4px; }
+  .fcp-stars small { color: var(--muted); }
+  .fcp-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .fcp-tags span {
+    background: var(--cream); color: var(--text);
+    font-size: 0.72rem; font-weight: 500;
+    padding: 4px 10px; border-radius: 100px;
+    border: 1px solid var(--cream-mid);
+  }
+  .fcp-photos { display: flex; gap: 8px; margin-bottom: 18px; }
+  .fcp-photo {
+    flex: 1; background: var(--cream-mid);
+    border-radius: 10px; padding: 16px 8px;
+    text-align: center; font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .fcp-btn {
+    width: 100%; background: var(--dark); color: #fff;
+    border: none; padding: 12px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-weight: 700;
+    font-size: 0.9rem; cursor: pointer; margin-bottom: 14px;
+  }
+  .fcp-label {
+    text-align: center; font-size: 0.75rem;
+    color: var(--muted); font-style: italic;
+  }
+
+  .free-fomo {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(74,124,89,0.15);
+    border: 1px solid rgba(107,175,129,0.3);
+    border-radius: 12px; padding: 14px 18px;
+    color: var(--green-light); font-size: 0.85rem; font-weight: 600;
+  }
+  .fomo-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--green-light); flex-shrink: 0;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  @media (max-width: 900px) {
+    .free-inner { grid-template-columns: 1fr; }
+    .free-right { display: none; }
+  }
+
+  /* ── LOCATION FILTER ── */
+  .location-filter-bar {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    align-items: flex-end;
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 24px rgba(26,18,8,0.08);
+    border: 1.5px solid var(--cream-mid);
+  }
+  .lf-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 140px; }
+  .lf-label { font-size: 0.72rem; font-weight: 700; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
+  .lf-select {
+    background: var(--cream);
+    border: 1.5px solid var(--cream-mid);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; color: var(--text);
+    outline: none; cursor: pointer;
+    transition: border-color 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A6E4A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+  .lf-select:focus { border-color: var(--amber); }
+  .lf-select.active-filter { border-color: var(--amber); background-color: rgba(224,123,47,0.06); color: var(--amber); font-weight: 600; }
+
+  .btn-use-location {
+    background: var(--dark);
+    color: #fff; border: none;
+    padding: 10px 18px; border-radius: 10px;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.82rem;
+    cursor: pointer; white-space: nowrap; align-self: flex-end;
+    transition: background 0.2s, transform 0.15s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn-use-location:hover { background: var(--amber); transform: translateY(-1px); }
+  .btn-use-location.loading { opacity: 0.7; cursor: wait; }
+
+  .btn-clear-filter {
+    background: transparent; border: 1.5px solid var(--cream-mid);
+    color: var(--muted); border-radius: 10px; padding: 10px 16px;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.82rem;
+    cursor: pointer; align-self: flex-end; white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .btn-clear-filter:hover { border-color: var(--amber); color: var(--amber); }
+
+  .result-info {
+    margin-bottom: 16px;
+    padding: 10px 16px;
+    background: rgba(224,123,47,0.08);
+    border: 1px solid rgba(224,123,47,0.2);
+    border-radius: 10px;
+    font-size: 0.85rem; color: var(--amber);
+    font-weight: 600;
+  }
+
+  /* Hidden pro card */
+  .pro-card.hidden-card { display: none; }
+
+  /* ── PLANS ── */
+  .plans-section {
+    padding: 80px 5%;
+    background: var(--dark);
+  }
+  .plans-section .section-label { color: var(--amber); }
+  .plans-section .section-title { color: #fff; }
+  .plans-subtitle {
+    color: rgba(255,255,255,0.45);
+    font-size: 1rem; margin-top: -24px; margin-bottom: 36px;
+  }
+
+  .plans-toggle {
+    display: inline-flex;
+    background: rgba(255,255,255,0.07);
+    border-radius: 100px;
+    padding: 5px;
+    margin-bottom: 48px;
+    gap: 4px;
+  }
+  .toggle-btn {
+    padding: 10px 28px; border-radius: 100px; border: none;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; color: rgba(255,255,255,0.5);
+    background: transparent; transition: all 0.25s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .toggle-btn.active { background: var(--amber); color: #fff; }
+  .save-badge {
+    background: var(--green); color: #fff;
+    font-size: 0.7rem; padding: 2px 8px; border-radius: 100px;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 24px; align-items: start;
+    max-width: 1000px;
+  }
+  .plan-card {
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    padding: 32px;
+    position: relative;
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .plan-card:hover { transform: translateY(-6px); border-color: rgba(224,123,47,0.5); }
+  .plan-popular {
+    background: rgba(224,123,47,0.12);
+    border-color: var(--amber);
+    transform: scale(1.04);
+  }
+  .plan-popular:hover { transform: scale(1.04) translateY(-6px); }
+  .plan-premium {
+    background: linear-gradient(135deg, rgba(74,124,89,0.15), rgba(255,255,255,0.04));
+    border-color: rgba(107,175,129,0.4);
+  }
+
+  .popular-ribbon {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--amber); color: #fff;
+    font-size: 0.75rem; font-weight: 700;
+    padding: 5px 18px; border-radius: 100px;
+    white-space: nowrap; letter-spacing: 0.5px;
+  }
+  .plan-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem; color: #fff; margin-bottom: 4px;
+  }
+  .plan-desc { font-size: 0.82rem; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+  .plan-price-wrap { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
+  .plan-price {
+    font-family: 'Fraunces', serif;
+    font-size: 2.6rem; color: var(--amber-light); font-weight: 700;
+    transition: all 0.3s;
+  }
+  .plan-period { color: rgba(255,255,255,0.4); font-size: 0.9rem; }
+  .plan-economy {
+    font-size: 0.78rem; color: var(--green-light);
+    font-weight: 600; margin-bottom: 4px;
+  }
+  .plan-top { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 28px; }
+  .feat { font-size: 0.85rem; display: flex; align-items: flex-start; gap: 8px; }
+  .feat.ok { color: rgba(255,255,255,0.75); }
+  .feat.no { color: rgba(255,255,255,0.22); }
+  .feat.ok::before { content: ''; display: inline-block; width: 8px; height: 8px;
+    background: var(--green-light); border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .feat.no::before { content: ''; display: inline-block; width: 8px; height: 8px;
+    background: rgba(255,255,255,0.15); border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+
+  .btn-plan {
+    width: 100%; padding: 14px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.95rem;
+    cursor: pointer; transition: all 0.2s; border: 2px solid transparent;
+  }
+  .btn-plan-outline {
+    background: transparent; border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);
+  }
+  .btn-plan-outline:hover { border-color: #fff; color: #fff; }
+  .btn-plan-primary { background: var(--amber); color: #fff; }
+  .btn-plan-primary:hover { background: var(--amber-light); transform: translateY(-2px); }
+  .btn-plan-dark { background: var(--green); color: #fff; }
+  .btn-plan-dark:hover { background: var(--green-light); transform: translateY(-2px); }
+
+  .guarantee-bar {
+    display: flex; align-items: center; gap: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 20px 28px;
+    margin-top: 40px; max-width: 600px;
+    color: rgba(255,255,255,0.7); font-size: 0.9rem;
+  }
+  .g-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .guarantee-bar strong { color: #fff; }
+
+  .roi-box {
+    margin-top: 32px;
+    background: rgba(224,123,47,0.1);
+    border: 1px solid rgba(224,123,47,0.3);
+    border-radius: 20px; padding: 28px 32px;
+    max-width: 700px;
+  }
+  .roi-title { color: var(--amber-light); font-weight: 700; margin-bottom: 20px; }
+  .roi-grid { display: flex; gap: 40px; flex-wrap: wrap; }
+  .roi-item { display: flex; flex-direction: column; gap: 4px; }
+  .roi-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem; color: #fff;
+  }
+  .roi-label { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+
+  .footer-disclaimer {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+    line-height: 1.7;
+  }
+  .footer-disclaimer strong { color: rgba(255,255,255,0.4); }
+
+  /* ── AVISO LEGAL FLUTUANTE ── */
+  .notice-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(26,18,8,0.97);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(224,123,47,0.3);
+    padding: 16px 5%;
+    z-index: 999;
+    display: flex; align-items: center; gap: 20px;
+    flex-wrap: wrap;
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+  }
+  .notice-bar.hidden { transform: translateY(110%); }
+  .notice-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .notice-text {
+    flex: 1; font-size: 0.8rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6; min-width: 200px;
+  }
+  .notice-text strong { color: rgba(255,255,255,0.8); }
+  .notice-text a { color: var(--amber-light); text-decoration: none; }
+  .notice-text a:hover { text-decoration: underline; }
+  .btn-notice-ok {
+    background: var(--amber); color: #fff; border: none;
+    padding: 10px 24px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-weight: 700;
+    font-size: 0.85rem; cursor: pointer; white-space: nowrap;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .btn-notice-ok:hover { background: var(--amber-light); }
+  .btn-notice-more {
+    background: transparent; color: rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 18px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    font-size: 0.82rem; cursor: pointer; white-space: nowrap;
+    transition: all 0.2s; flex-shrink: 0;
+  }
+  .btn-notice-more:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+  /* ── MODAL TERMOS ── */
+  .terms-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(6px);
+    z-index: 1000; display: none;
+    align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .terms-overlay.open { display: flex; }
+  .terms-box {
+    background: #1A1208;
+    border: 1px solid rgba(224,123,47,0.3);
+    border-radius: 24px; padding: 40px;
+    max-width: 660px; width: 100%;
+    max-height: 85vh; overflow-y: auto;
+  }
+  .terms-box h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem; color: #fff; margin-bottom: 6px;
+  }
+  .terms-box .terms-date { font-size: 0.78rem; color: var(--muted); margin-bottom: 28px; }
+  .terms-section { margin-bottom: 24px; }
+  .terms-section h3 {
+    font-size: 0.9rem; font-weight: 700; color: var(--amber-light);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+  }
+  .terms-section p {
+    font-size: 0.85rem; color: rgba(255,255,255,0.55);
+    line-height: 1.8;
+  }
+  .terms-highlight {
+    background: rgba(224,123,47,0.1);
+    border-left: 3px solid var(--amber);
+    padding: 14px 18px; border-radius: 0 10px 10px 0;
+    font-size: 0.85rem; color: rgba(255,255,255,0.7);
+    line-height: 1.7; margin: 16px 0;
+  }
+  .btn-close-terms {
+    width: 100%; background: var(--amber); color: #fff; border: none;
+    padding: 14px; border-radius: 100px; margin-top: 10px;
+    font-family: 'DM Sans', sans-serif; font-weight: 700;
+    font-size: 0.95rem; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-close-terms:hover { background: var(--amber-light); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-stats { gap: 28px; flex-wrap: wrap; justify-content: center; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .section-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Minha <span>Mão de Obra</span></div>
+  <ul class="nav-links">
+    <li><a href="#categorias">Categorias</a></li>
+    <li><a href="#profissionais">Profissionais</a></li>
+    <li><a href="demandas.html">📋 Demandas</a></li>
+    <li><a href="#como-funciona">Como Funciona</a></li>
+    <li><a href="#gratis">Plano Grátis</a></li>
+    <li><a href="#planos">Planos</a></li>
+    <li><a href="#avaliacoes">Avaliações</a></li>
+  </ul>
+  <button class="btn-nav" onclick="location.href='cadastro.html'">Cadastre-se Grátis</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✦ +12.000 profissionais cadastrados</div>
+  <h1>O profissional certo<br>para <em>cada serviço</em></h1>
+  <p>Encontre eletricistas, encanadores, pintores, marceneiros e muito mais — com avaliações reais e contato direto.</p>
+  <div class="hero-search">
+    <input type="text" placeholder="Que serviço você precisa? Ex: Eletricista, Pedreiro...">
+    <button class="btn-search">Buscar</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">12k+</span><span class="stat-label">Profissionais</span></div>
+    <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Satisfação</span></div>
+    <div class="stat"><span class="stat-num">47k</span><span class="stat-label">Serviços Realizados</span></div>
+    <div class="stat"><span class="stat-num">850+</span><span class="stat-label">Cidades</span></div>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section class="section" id="categorias">
+  <div class="section-label">Explorar</div>
+  <h2 class="section-title">Escolha a categoria</h2>
+  <div class="categories-grid">
+    <a class="cat-card active" href="#profissionais" data-cat="Elétrica">
+      <span class="cat-icon">⚡</span>
+      <div class="cat-name">Elétrica</div>
+      <div class="cat-count">1.240 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="Encanamento">
+      <span class="cat-icon">🔧</span>
+      <div class="cat-name">Encanamento</div>
+      <div class="cat-count">980 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="Construção">
+      <span class="cat-icon">🏗️</span>
+      <div class="cat-name">Construção</div>
+      <div class="cat-count">2.100 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="Pintura">
+      <span class="cat-icon">🎨</span>
+      <div class="cat-name">Pintura</div>
+      <div class="cat-count">760 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="Marcenaria">
+      <span class="cat-icon">🪵</span>
+      <div class="cat-name">Marcenaria</div>
+      <div class="cat-count">540 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="Jardinagem">
+      <span class="cat-icon">🌿</span>
+      <div class="cat-name">Jardinagem</div>
+      <div class="cat-count">430 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="Ar-Condicionado">
+      <span class="cat-icon">❄️</span>
+      <div class="cat-name">Ar-Condicionado</div>
+      <div class="cat-count">620 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="Limpeza">
+      <span class="cat-icon">🧹</span>
+      <div class="cat-name">Limpeza</div>
+      <div class="cat-count">1.800 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="Reformas">
+      <span class="cat-icon">🏠</span>
+      <div class="cat-name">Reformas</div>
+      <div class="cat-count">1.350 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="Tecnologia">
+      <span class="cat-icon">📱</span>
+      <div class="cat-name">Tecnologia</div>
+      <div class="cat-count">900 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="Mecânica">
+      <span class="cat-icon">🚗</span>
+      <div class="cat-name">Mecânica</div>
+      <div class="cat-count">710 profissionais</div>
+    </a>
+    <a class="cat-card" href="#profissionais" data-cat="">
+      <span class="cat-icon">+</span>
+      <div class="cat-name">Ver Todos</div>
+      <div class="cat-count">60 categorias</div>
+    </a>
+  </div>
+</section>
+
+<!-- PROFISSIONAIS -->
+<section class="pros-section" id="profissionais">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Destaque</div>
+      <h2 class="section-title" style="margin-bottom:0">Profissionais em Alta</h2>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="setSort('todos',this)">Todos</button>
+      <button class="filter-btn" onclick="setSort('avaliados',this)">Melhor Avaliados</button>
+      <button class="filter-btn" onclick="setSort('proximos',this)">Mais Próximos</button>
+      <button class="filter-btn" onclick="setSort('disponiveis',this)">Disponível Agora</button>
+    </div>
+  </div>
+
+  <!-- FILTRO DE LOCALIDADE -->
+  <div class="location-filter-bar">
+    <div class="lf-group">
+      <label class="lf-label">📍 Estado</label>
+      <select class="lf-select" id="filter-estado" onchange="onEstadoChange()">
+        <option value="">Todos os estados</option>
+        <option value="SP">São Paulo</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="PR">Paraná</option>
+        <option value="BA">Bahia</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="GO">Goiás</option>
+        <option value="PE">Pernambuco</option>
+        <option value="CE">Ceará</option>
+      </select>
+    </div>
+    <div class="lf-group">
+      <label class="lf-label">🏙️ Cidade</label>
+      <select class="lf-select" id="filter-cidade" onchange="applyLocationFilter()">
+        <option value="">Todas as cidades</option>
+      </select>
+    </div>
+    <div class="lf-group">
+      <label class="lf-label">🔧 Categoria</label>
+      <select class="lf-select" id="filter-categoria" onchange="applyLocationFilter()">
+        <option value="">Todas as categorias</option>
+        <option>Elétrica</option>
+        <option>Encanamento</option>
+        <option>Construção</option>
+        <option>Pintura</option>
+        <option>Marcenaria</option>
+        <option>Jardinagem</option>
+        <option>Ar-Condicionado</option>
+        <option>Limpeza</option>
+        <option>Tecnologia</option>
+        <option>Mecânica</option>
+      </select>
+    </div>
+    <div class="lf-group">
+      <label class="lf-label">💰 Preço máx.</label>
+      <select class="lf-select" id="filter-preco" onchange="applyLocationFilter()">
+        <option value="">Qualquer preço</option>
+        <option value="100">Até R$100/h</option>
+        <option value="150">Até R$150/h</option>
+        <option value="200">Até R$200/h</option>
+      </select>
+    </div>
+    <button class="btn-use-location" onclick="useMyLocation()" id="btn-gps">
+      <span id="gps-icon">📡</span> Usar minha localização
+    </button>
+    <button class="btn-clear-filter" onclick="clearFilters()" id="btn-clear" style="display:none">
+      ✕ Limpar filtros
+    </button>
+  </div>
+
+  <!-- RESULTADO INFO -->
+  <div class="result-info" id="result-info" style="display:none">
+    <span id="result-text">Mostrando todos os profissionais</span>
+  </div>
+
+  <div class="pros-grid" id="pros-grid">
+
+    <!-- Card 1 -->
+    <div class="pro-card" data-estado="SP" data-cidade="São Paulo" data-cat="Elétrica" data-preco="120" data-rating="4.9" data-disponivel="true">
+      <div style="position:relative">
+        <div class="pro-img-placeholder">👷</div>
+        <div class="badge-avail">● Disponível</div>
+        <div class="badge-featured">⭐ Destaque</div>
+      </div>
+      <div class="pro-card-body">
+        <div class="pro-top">
+          <div>
+            <div class="pro-name">Carlos Eduardo</div>
+            <div class="pro-role">Eletricista Residencial & Industrial</div>
+          </div>
+          <div class="pro-price">
+            <span class="price-val">R$120</span>
+            <span class="price-label">por hora</span>
+          </div>
+        </div>
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="rating-num">4.9</span>
+          <span class="review-count">(247 avaliações)</span>
+        </div>
+        <div class="pro-tags">
+          <span class="tag">Instalação</span>
+          <span class="tag">SPDA</span>
+          <span class="tag">Quadros Elétricos</span>
+          <span class="tag">Laudo</span>
+        </div>
+        <div class="pro-footer">
+          <div class="pro-location">📍 São Paulo, SP</div>
+          <button class="btn-contact">Contratar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="pro-card" data-estado="RJ" data-cidade="Rio de Janeiro" data-cat="Construção" data-preco="180" data-rating="4.8" data-disponivel="true">
+      <div style="position:relative">
+        <div class="pro-img-placeholder">🔨</div>
+        <div class="badge-avail">● Disponível</div>
+      </div>
+      <div class="pro-card-body">
+        <div class="pro-top">
+          <div>
+            <div class="pro-name">Ana Souza</div>
+            <div class="pro-role">Pedreiro & Reformas Completas</div>
+          </div>
+          <div class="pro-price">
+            <span class="price-val">R$180</span>
+            <span class="price-label">por dia</span>
+          </div>
+        </div>
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="rating-num">4.8</span>
+          <span class="review-count">(189 avaliações)</span>
+        </div>
+        <div class="pro-tags">
+          <span class="tag">Alvenaria</span>
+          <span class="tag">Revestimento</span>
+          <span class="tag">Piso</span>
+        </div>
+        <div class="pro-footer">
+          <div class="pro-location">📍 Rio de Janeiro, RJ</div>
+          <button class="btn-contact">Contratar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="pro-card" data-estado="MG" data-cidade="Belo Horizonte" data-cat="Pintura" data-preco="90" data-rating="4.6" data-disponivel="false">
+      <div style="position:relative">
+        <div class="pro-img-placeholder">🎨</div>
+        <div class="badge-avail" style="background:var(--muted)">● Ocupado</div>
+        <div class="badge-featured">⭐ Destaque</div>
+      </div>
+      <div class="pro-card-body">
+        <div class="pro-top">
+          <div>
+            <div class="pro-name">Roberto Lima</div>
+            <div class="pro-role">Pintor Profissional — Texturas & Acabamentos</div>
+          </div>
+          <div class="pro-price">
+            <span class="price-val">R$90</span>
+            <span class="price-label">por hora</span>
+          </div>
+        </div>
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="color:#ddd">★</span>
+          <span class="rating-num">4.6</span>
+          <span class="review-count">(312 avaliações)</span>
+        </div>
+        <div class="pro-tags">
+          <span class="tag">Textura</span>
+          <span class="tag">Grafiato</span>
+          <span class="tag">Marmorato</span>
+          <span class="tag">Epóxi</span>
+        </div>
+        <div class="pro-footer">
+          <div class="pro-location">📍 Belo Horizonte, MG</div>
+          <button class="btn-contact">Contratar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="pro-card" data-estado="PR" data-cidade="Curitiba" data-cat="Marcenaria" data-preco="250" data-rating="5.0" data-disponivel="true">
+      <div style="position:relative">
+        <div class="pro-img-placeholder">🪵</div>
+        <div class="badge-avail">● Disponível</div>
+      </div>
+      <div class="pro-card-body">
+        <div class="pro-top">
+          <div>
+            <div class="pro-name">Fernanda Costa</div>
+            <div class="pro-role">Marceneira — Móveis Planejados</div>
+          </div>
+          <div class="pro-price">
+            <span class="price-val">R$250</span>
+            <span class="price-label">por projeto</span>
+          </div>
+        </div>
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="rating-num">5.0</span>
+          <span class="review-count">(98 avaliações)</span>
+        </div>
+        <div class="pro-tags">
+          <span class="tag">MDF</span>
+          <span class="tag">Cozinha</span>
+          <span class="tag">Closet</span>
+          <span class="tag">Móveis sob Medida</span>
+        </div>
+        <div class="pro-footer">
+          <div class="pro-location">📍 Curitiba, PR</div>
+          <button class="btn-contact">Contratar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="pro-card" data-estado="RS" data-cidade="Porto Alegre" data-cat="Encanamento" data-preco="100" data-rating="4.7" data-disponivel="true">
+      <div style="position:relative">
+        <div class="pro-img-placeholder">🔧</div>
+        <div class="badge-avail">● Disponível</div>
+      </div>
+      <div class="pro-card-body">
+        <div class="pro-top">
+          <div>
+            <div class="pro-name">Marcos Silva</div>
+            <div class="pro-role">Encanador & Hidráulica Geral</div>
+          </div>
+          <div class="pro-price">
+            <span class="price-val">R$100</span>
+            <span class="price-label">por hora</span>
+          </div>
+        </div>
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="rating-num">4.7</span>
+          <span class="review-count">(165 avaliações)</span>
+        </div>
+        <div class="pro-tags">
+          <span class="tag">Vazamentos</span>
+          <span class="tag">Aquecedor</span>
+          <span class="tag">Esgoto</span>
+        </div>
+        <div class="pro-footer">
+          <div class="pro-location">📍 Porto Alegre, RS</div>
+          <button class="btn-contact">Contratar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="pro-card" data-estado="BA" data-cidade="Salvador" data-cat="Ar-Condicionado" data-preco="130" data-rating="4.9" data-disponivel="true">
+      <div style="position:relative">
+        <div class="pro-img-placeholder">❄️</div>
+        <div class="badge-avail">● Disponível</div>
+        <div class="badge-featured">⭐ Destaque</div>
+      </div>
+      <div class="pro-card-body">
+        <div class="pro-top">
+          <div>
+            <div class="pro-name">Juliana Matos</div>
+            <div class="pro-role">Técnica em Refrigeração & AC</div>
+          </div>
+          <div class="pro-price">
+            <span class="price-val">R$130</span>
+            <span class="price-label">por serviço</span>
+          </div>
+        </div>
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="rating-num">4.9</span>
+          <span class="review-count">(203 avaliações)</span>
+        </div>
+        <div class="pro-tags">
+          <span class="tag">Instalação</span>
+          <span class="tag">Manutenção</span>
+          <span class="tag">Higienização</span>
+        </div>
+        <div class="pro-footer">
+          <div class="pro-location">📍 Salvador, BA</div>
+          <button class="btn-contact">Contratar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="how-section" id="como-funciona">
+  <div class="section-label" style="color:var(--amber)">Simples assim</div>
+  <h2 class="section-title">Como funciona</h2>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-icon">🔍</div>
+      <h3>Pesquise</h3>
+      <p>Busque pelo tipo de serviço ou profissional que você precisa. Filtre por cidade, avaliação e disponibilidade.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-icon">📋</div>
+      <h3>Compare</h3>
+      <p>Veja portfólios, avaliações reais de outros clientes e os preços de cada profissional antes de decidir.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-icon">💬</div>
+      <h3>Contate</h3>
+      <p>Entre em contato diretamente com o profissional para combinar detalhes, agenda e orçamento.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-icon">⭐</div>
+      <h3>Avalie</h3>
+      <p>Após o serviço, deixe sua avaliação e ajude outros clientes a encontrar os melhores profissionais.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section class="reviews-section" id="avaliacoes">
+  <div class="section-label">Clientes Satisfeitos</div>
+  <h2 class="section-title">O que dizem sobre nós</h2>
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Encontrei um eletricista excelente em menos de 30 minutos. O Carlos foi pontual, resolveu tudo e o preço foi justo. Com certeza usarei o site novamente!"</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">👩</div>
+        <div>
+          <div class="reviewer-name">Patrícia Mendes</div>
+          <div class="reviewer-service">Serviço: Instalação Elétrica — São Paulo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Minha cozinha ficou incrível com o trabalho da Fernanda. Móveis planejados perfeitos, prazo cumprido e acabamento impecável. Super recomendo!"</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">👨</div>
+        <div>
+          <div class="reviewer-name">Diego Oliveira</div>
+          <div class="reviewer-service">Serviço: Móveis Planejados — Curitiba</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Vazamento solucionado em 1 hora. O Marcos chegou rápido, foi muito profissional e o preço foi transparente desde o início. Plataforma nota 10!"</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">👩</div>
+        <div>
+          <div class="reviewer-name">Luciana Faria</div>
+          <div class="reviewer-service">Serviço: Hidráulica — Porto Alegre</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GRATIS DESTAQUE -->
+<section class="free-section" id="gratis">
+  <div class="free-inner">
+    <div class="free-left">
+      <div class="section-label" style="color:var(--green-light)">100% Gratuito para começar</div>
+      <h2 class="free-title">Cadastre-se agora<br>e ganhe tudo isso <em>de graça</em></h2>
+      <p class="free-sub">Sem cartão de crédito. Sem taxa de adesão. Sem pegadinha.</p>
+      <ul class="free-list">
+        <li>
+          <span class="free-icon">👤</span>
+          <div>
+            <strong>Perfil profissional completo</strong>
+            <span>Seu nome, foto, especialidade e cidade visíveis para milhares de clientes</span>
+          </div>
+        </li>
+        <li>
+          <span class="free-icon">🔍</span>
+          <div>
+            <strong>Apareça nas buscas</strong>
+            <span>Clientes que procuram seu serviço na plataforma vão te encontrar</span>
+          </div>
+        </li>
+        <li>
+          <span class="free-icon">🖼️</span>
+          <div>
+            <strong>Portfólio com até 3 fotos</strong>
+            <span>Mostre seus trabalhos e conquiste a confiança do cliente antes mesmo do contato</span>
+          </div>
+        </li>
+        <li>
+          <span class="free-icon">⭐</span>
+          <div>
+            <strong>Receba avaliações reais</strong>
+            <span>Clientes avaliam seu trabalho e constroem sua reputação automaticamente</span>
+          </div>
+        </li>
+        <li>
+          <span class="free-icon">📲</span>
+          <div>
+            <strong>Contato direto pelo WhatsApp</strong>
+            <span>O cliente clica e já te chama — sem intermediários, sem taxa por contato</span>
+          </div>
+        </li>
+        <li>
+          <span class="free-icon">🗂️</span>
+          <div>
+            <strong>Cadastro em menos de 3 minutos</strong>
+            <span>Só nome, WhatsApp e categoria. Simples assim.</span>
+          </div>
+        </li>
+      </ul>
+      <div class="free-cta-row">
+        <button class="btn-free-main" onclick="location.href='cadastro.html'">Criar meu perfil grátis agora →</button>
+        <span class="free-nota">Já são <strong>12.000+</strong> profissionais cadastrados</span>
+      </div>
+    </div>
+    <div class="free-right">
+      <div class="free-card-preview">
+        <div class="fcp-badge">● Disponível agora</div>
+        <div class="fcp-avatar">🔧</div>
+        <div class="fcp-name">Seu Nome Aqui</div>
+        <div class="fcp-role">Sua Especialidade</div>
+        <div class="fcp-stars">★★★★★ <span>5.0</span> <small>(novo)</small></div>
+        <div class="fcp-tags">
+          <span>Sua cidade</span><span>Sua categoria</span>
+        </div>
+        <div class="fcp-photos">
+          <div class="fcp-photo">📸 Foto 1</div>
+          <div class="fcp-photo">📸 Foto 2</div>
+          <div class="fcp-photo">📸 Foto 3</div>
+        </div>
+        <button class="fcp-btn">Entrar em contato</button>
+        <div class="fcp-label">Assim ficará seu perfil gratuito</div>
+      </div>
+      <div class="free-fomo">
+        <span class="fomo-dot"></span>
+        <span>3 clientes buscaram seu serviço na sua cidade hoje</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section class="plans-section" id="planos">
+  <div class="section-label">Para Profissionais</div>
+  <h2 class="section-title">Escolha seu plano e<br>comece a receber clientes</h2>
+  <p class="plans-subtitle">Comece grátis. Faça upgrade quando quiser crescer mais rápido.</p>
+
+  <div class="plans-toggle">
+    <button class="toggle-btn active" id="btn-mensal">Mensal</button>
+    <button class="toggle-btn" id="btn-anual">Anual <span class="save-badge">-30%</span></button>
+  </div>
+
+  <div class="plans-grid">
+
+    <!-- Gratuito -->
+    <div class="plan-card">
+      <div class="plan-top">
+        <div class="plan-name">Gratuito</div>
+        <div class="plan-desc">Para começar na plataforma</div>
+        <div class="plan-price-wrap">
+          <span class="plan-price">R$0</span>
+          <span class="plan-period">/sempre</span>
+        </div>
+      </div>
+      <ul class="plan-features">
+        <li class="feat ok">✓ Perfil básico cadastrado</li>
+        <li class="feat ok">✓ Aparecer nas buscas</li>
+        <li class="feat ok">✓ Até 3 fotos do portfólio</li>
+        <li class="feat ok">✓ Receber avaliações</li>
+        <li class="feat no">✗ Sem destaque nas buscas</li>
+        <li class="feat no">✗ Sem badge verificado</li>
+        <li class="feat no">✗ Sem relatório de visitas</li>
+        <li class="feat no">✗ Sem suporte prioritário</li>
+      </ul>
+      <button class="btn-plan btn-plan-outline">Cadastrar Grátis</button>
+    </div>
+
+    <!-- Pro -->
+    <div class="plan-card plan-popular">
+      <div class="popular-ribbon">⭐ Mais Popular</div>
+      <div class="plan-top">
+        <div class="plan-name">Pro</div>
+        <div class="plan-desc">Para profissionais que querem crescer</div>
+        <div class="plan-price-wrap">
+          <span class="plan-price" data-mensal="R$39" data-anual="R$27">R$39</span>
+          <span class="plan-period">/mês</span>
+        </div>
+        <div class="plan-economy" style="display:none">Economize R$144 por ano</div>
+      </div>
+      <ul class="plan-features">
+        <li class="feat ok">✓ Tudo do plano Gratuito</li>
+        <li class="feat ok">✓ Destaque nas buscas</li>
+        <li class="feat ok">✓ Até 20 fotos no portfólio</li>
+        <li class="feat ok">✓ Badge <strong>"Profissional Verificado"</strong></li>
+        <li class="feat ok">✓ Relatório de visitas ao perfil</li>
+        <li class="feat ok">✓ Receber contatos ilimitados</li>
+        <li class="feat no">✗ Sem posição nº1 garantida</li>
+        <li class="feat no">✗ Sem gerente de conta</li>
+      </ul>
+      <button class="btn-plan btn-plan-primary">Assinar Pro</button>
+    </div>
+
+    <!-- Premium -->
+    <div class="plan-card plan-premium">
+      <div class="plan-top">
+        <div class="plan-name">Premium</div>
+        <div class="plan-desc">Para quem quer dominar a região</div>
+        <div class="plan-price-wrap">
+          <span class="plan-price" data-mensal="R$89" data-anual="R$62">R$89</span>
+          <span class="plan-period">/mês</span>
+        </div>
+        <div class="plan-economy" style="display:none">Economize R$324 por ano</div>
+      </div>
+      <ul class="plan-features">
+        <li class="feat ok">✓ Tudo do plano Pro</li>
+        <li class="feat ok">✓ <strong>Posição nº1</strong> na sua categoria/cidade</li>
+        <li class="feat ok">✓ Banner na página inicial</li>
+        <li class="feat ok">✓ Fotos e vídeos ilimitados</li>
+        <li class="feat ok">✓ Gerente de conta dedicado</li>
+        <li class="feat ok">✓ Suporte prioritário 24h</li>
+        <li class="feat ok">✓ Relatórios avançados</li>
+        <li class="feat ok">✓ Impulsionamento em redes sociais</li>
+      </ul>
+      <button class="btn-plan btn-plan-dark">Assinar Premium</button>
+    </div>
+
+  </div>
+
+  <div class="guarantee-bar">
+    <span class="g-icon">🛡️</span>
+    <div><strong>Garantia de 30 dias.</strong> Se não ficar satisfeito, devolvemos 100% do valor sem perguntas.</div>
+  </div>
+
+  <div class="roi-box">
+    <div class="roi-title">💡 Veja o retorno real do investimento</div>
+    <div class="roi-grid">
+      <div class="roi-item">
+        <span class="roi-num">1 serviço</span>
+        <span class="roi-label">já paga o plano Pro do mês</span>
+      </div>
+      <div class="roi-item">
+        <span class="roi-num">+3×</span>
+        <span class="roi-label">mais visualizações no plano Pro</span>
+      </div>
+      <div class="roi-item">
+        <span class="roi-num">R$0</span>
+        <span class="roi-label">de comissão sobre seus serviços</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Você é um profissional?<br>Cadastre-se agora</h2>
+  <p>Publique seu perfil gratuitamente e comece a receber clientes hoje mesmo.</p>
+  <div class="cta-btns">
+    <button class="btn-cta-dark" onclick="location.href='cadastro.html'">Cadastrar como Profissional</button>
+    <button class="btn-cta-outline" onclick="location.href='#profissionais'">Buscar Profissionais</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Minha Mão de Obra</h3>
+      <p>Conectando clientes a profissionais qualificados em todo o Brasil de forma simples, segura e transparente.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Plataforma</h4>
+      <ul>
+        <li><a href="#">Como Funciona</a></li>
+        <li><a href="#">Categorias</a></li>
+        <li><a href="#">Profissionais</a></li>
+        <li><a href="#">Preços</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#">Sobre Nós</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Carreiras</a></li>
+        <li><a href="#">Imprensa</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Suporte</h4>
+      <ul>
+        <li><a href="#">Central de Ajuda</a></li>
+        <li><a href="privacidade.html">Privacidade</a></li>
+        <li><a href="#">Termos de Uso</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Minha Mão de Obra. Todos os direitos reservados.</span>
+    <span>Feito com ❤️ para o Brasil</span>
+    <a href="admin.html" style="color:rgba(255,255,255,0.15);font-size:0.75rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='rgba(255,255,255,0.5)'" onmouseout="this.style.color='rgba(255,255,255,0.15)'">⚙️ Admin</a>
+  </div>
+  <div class="footer-disclaimer">
+    ⚠️ <strong>Aviso Legal:</strong> O Minha Mão de Obra é uma plataforma de divulgação e conexão entre clientes e profissionais autônomos. Não nos responsabilizamos pela qualidade, execução, resultado ou qualquer dano decorrente dos serviços contratados ou prestados entre as partes. A contratação é de inteira responsabilidade do cliente e do profissional envolvidos. Recomendamos verificar referências, avaliações e formalizar acordos antes de iniciar qualquer serviço. Ao utilizar esta plataforma, você concorda com nossos <a href="#" style="color:var(--amber-light)">Termos de Uso</a> e <a href="#" style="color:var(--amber-light)">Política de Privacidade</a>.
+  </div>
+</footer>
+
+<script>
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Category cards → filter professionals
+  document.querySelectorAll('.cat-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      const cat = card.dataset.cat || '';
+
+      // Set the categoria filter dropdown and apply
+      const catSelect = document.getElementById('filter-categoria');
+      if (catSelect) {
+        catSelect.value = cat;
+        catSelect.classList.toggle('active-filter', !!cat);
+      }
+
+      // Filter the pro cards
+      const cards = document.querySelectorAll('#pros-grid .pro-card');
+      let visible = 0;
+      cards.forEach(c => {
+        const match = !cat || c.dataset.cat === cat;
+        c.classList.toggle('hidden-card', !match);
+        if (match) visible++;
+      });
+
+      // Update result info
+      const resultInfo = document.getElementById('result-info');
+      const resultText = document.getElementById('result-text');
+      const btnClear   = document.getElementById('btn-clear');
+      const noResults  = document.getElementById('no-results');
+
+      if (cat) {
+        resultInfo.style.display = 'block';
+        resultText.textContent = `📍 ${visible} profissional${visible !== 1 ? 'is' : ''} encontrado${visible !== 1 ? 's' : ''} em ${cat}`;
+        btnClear.style.display = 'inline-flex';
+      } else {
+        resultInfo.style.display = 'none';
+        btnClear.style.display = 'none';
+      }
+
+      if (visible === 0 && !noResults) {
+        const div = document.createElement('div');
+        div.id = 'no-results';
+        div.style.cssText = 'grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)';
+        div.innerHTML = `<div style="font-size:3rem;margin-bottom:12px">🔍</div><div style="font-weight:600;margin-bottom:6px">Nenhum profissional encontrado em ${cat}</div><div style="font-size:0.85rem">Tente outra categoria ou <a href="#" onclick="clearFilters();return false;" style="color:var(--amber)">veja todos</a></div>`;
+        document.getElementById('pros-grid').appendChild(div);
+      } else if (visible > 0 && noResults) {
+        noResults.remove();
+      }
+
+      // Scroll to professionals section smoothly
+      document.getElementById('profissionais').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Plans toggle mensal/anual
+  const btnMensal = document.getElementById('btn-mensal');
+  const btnAnual = document.getElementById('btn-anual');
+  function setPlans(mode) {
+    document.querySelectorAll('.plan-price[data-mensal]').forEach(el => {
+      el.textContent = mode === 'mensal' ? el.dataset.mensal : el.dataset.anual;
+    });
+    document.querySelectorAll('.plan-economy').forEach(el => {
+      el.style.display = mode === 'anual' ? 'block' : 'none';
+    });
+    btnMensal.classList.toggle('active', mode === 'mensal');
+    btnAnual.classList.toggle('active', mode === 'anual');
+  }
+  btnMensal.addEventListener('click', () => setPlans('mensal'));
+  btnAnual.addEventListener('click', () => setPlans('anual'));
+
+  // ── LOCATION FILTER ──
+  const cidadesPorEstado = {
+    SP: ['São Paulo','Campinas','Santos','Ribeirão Preto','São Bernardo do Campo'],
+    RJ: ['Rio de Janeiro','Niterói','Duque de Caxias','Nova Iguaçu','Petrópolis'],
+    MG: ['Belo Horizonte','Uberlândia','Contagem','Juiz de Fora','Montes Claros'],
+    RS: ['Porto Alegre','Caxias do Sul','Pelotas','Canoas','Santa Maria'],
+    PR: ['Curitiba','Londrina','Maringá','Ponta Grossa','Cascavel'],
+    BA: ['Salvador','Feira de Santana','Vitória da Conquista','Camaçari','Itabuna'],
+    SC: ['Florianópolis','Joinville','Blumenau','São José','Chapecó'],
+    GO: ['Goiânia','Aparecida de Goiânia','Anápolis','Rio Verde','Luziânia'],
+    PE: ['Recife','Caruaru','Petrolina','Olinda','Paulista'],
+    CE: ['Fortaleza','Caucaia','Juazeiro do Norte','Maracanaú','Sobral'],
+  };
+
+  function onEstadoChange() {
+    const estado = document.getElementById('filter-estado').value;
+    const cidSel = document.getElementById('filter-cidade');
+    cidSel.innerHTML = '<option value="">Todas as cidades</option>';
+    if (estado && cidadesPorEstado[estado]) {
+      cidadesPorEstado[estado].forEach(c => {
+        cidSel.innerHTML += `<option value="${c}">${c}</option>`;
+      });
+    }
+    applyLocationFilter();
+  }
+
+  function applyLocationFilter() {
+    const estado = document.getElementById('filter-estado').value;
+    const cidade = document.getElementById('filter-cidade').value;
+    const cat    = document.getElementById('filter-categoria').value;
+    const preco  = document.getElementById('filter-preco').value;
+
+    const cards = document.querySelectorAll('#pros-grid .pro-card');
+    let visible = 0;
+
+    cards.forEach(card => {
+      const match =
+        (!estado || card.dataset.estado === estado) &&
+        (!cidade || card.dataset.cidade === cidade) &&
+        (!cat    || card.dataset.cat === cat) &&
+        (!preco  || parseFloat(card.dataset.preco) <= parseFloat(preco));
+
+      card.classList.toggle('hidden-card', !match);
+      if (match) visible++;
+    });
+
+    // highlight active selects
+    ['filter-estado','filter-cidade','filter-categoria','filter-preco'].forEach(id => {
+      const el = document.getElementById(id);
+      el.classList.toggle('active-filter', !!el.value);
+    });
+
+    const hasFilter = estado || cidade || cat || preco;
+    document.getElementById('btn-clear').style.display = hasFilter ? 'inline-flex' : 'none';
+    document.getElementById('result-info').style.display = hasFilter ? 'block' : 'none';
+
+    let msg = `📍 ${visible} profissional${visible !== 1 ? 'is' : ''} encontrado${visible !== 1 ? 's' : ''}`;
+    if (cidade)  msg += ` em ${cidade}`;
+    else if (estado) msg += ` em ${document.getElementById('filter-estado').options[document.getElementById('filter-estado').selectedIndex].text}`;
+    if (cat)  msg += ` • ${cat}`;
+    document.getElementById('result-text').textContent = msg;
+
+    if (visible === 0) {
+      const grid = document.getElementById('pros-grid');
+      if (!document.getElementById('no-results')) {
+        const div = document.createElement('div');
+        div.id = 'no-results';
+        div.style.cssText = 'grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)';
+        div.innerHTML = '<div style="font-size:3rem;margin-bottom:12px">🔍</div><div style="font-weight:600;margin-bottom:6px">Nenhum profissional encontrado</div><div style="font-size:0.85rem">Tente outros filtros ou <a href="#" onclick="clearFilters();return false;" style="color:var(--amber)">limpe a busca</a></div>';
+        grid.appendChild(div);
+      }
+    } else {
+      const nr = document.getElementById('no-results');
+      if (nr) nr.remove();
+    }
+  }
+
+  function clearFilters() {
+    ['filter-estado','filter-cidade','filter-categoria','filter-preco'].forEach(id => {
+      document.getElementById(id).value = '';
+      document.getElementById(id).classList.remove('active-filter');
+    });
+    document.getElementById('filter-cidade').innerHTML = '<option value="">Todas as cidades</option>';
+    document.querySelectorAll('#pros-grid .pro-card').forEach(c => c.classList.remove('hidden-card'));
+    document.getElementById('btn-clear').style.display = 'none';
+    document.getElementById('result-info').style.display = 'none';
+    const nr = document.getElementById('no-results');
+    if (nr) nr.remove();
+    // Reset category card highlight — none selected = "Ver Todos"
+    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+    const verTodos = document.querySelector('.cat-card[data-cat=""]');
+    if (verTodos) verTodos.classList.add('active');
+  }
+
+  function setSort(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const grid = document.getElementById('pros-grid');
+    const cards = [...grid.querySelectorAll('.pro-card')];
+    if (type === 'avaliados') {
+      cards.sort((a,b) => parseFloat(b.dataset.rating||0) - parseFloat(a.dataset.rating||0));
+    } else if (type === 'disponiveis') {
+      cards.sort((a,b) => (b.dataset.disponivel==='true'?1:0) - (a.dataset.disponivel==='true'?1:0));
+    } else if (type === 'proximos') {
+      // shuffle for demo — in production would use real geolocation distance
+      cards.sort(() => Math.random() - 0.5);
+    } else {
+      cards.sort((a,b) => parseInt(a.dataset.id||0) - parseInt(b.dataset.id||0));
+    }
+    cards.forEach(c => grid.appendChild(c));
+  }
+
+  function useMyLocation() {
+    const btn = document.getElementById('btn-gps');
+    const icon = document.getElementById('gps-icon');
+    if (!navigator.geolocation) { alert('Seu navegador não suporta geolocalização.'); return; }
+    btn.classList.add('loading');
+    icon.textContent = '⏳';
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        btn.classList.remove('loading');
+        icon.textContent = '✅';
+        btn.textContent = '';
+        btn.innerHTML = '<span>✅</span> Localização detectada!';
+        // In a real app, you'd reverse-geocode lat/lng to city/state
+        // For demo, we simulate detecting São Paulo
+        setTimeout(() => {
+          document.getElementById('filter-estado').value = 'SP';
+          onEstadoChange();
+          document.getElementById('filter-cidade').value = 'São Paulo';
+          applyLocationFilter();
+          btn.innerHTML = '<span>📡</span> Usar minha localização';
+          btn.classList.remove('loading');
+        }, 1200);
+      },
+      () => {
+        btn.classList.remove('loading');
+        icon.textContent = '📡';
+        alert('Não foi possível obter sua localização. Selecione o estado e cidade manualmente.');
+      }
+    );
+  }
+
+  // Scroll reveal for plan cards
+  document.querySelectorAll('.plan-card, .guarantee-bar, .roi-box').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.pro-card, .step, .review-card, .cat-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+<!-- AVISO LEGAL FLUTUANTE -->
+<div class="notice-bar" id="notice-bar">
+  <div class="notice-icon">⚠️</div>
+  <div class="notice-text">
+    <strong>Aviso importante:</strong> O Minha Mão de Obra é uma plataforma de divulgação. <strong>Não nos responsabilizamos</strong> por serviços contratados ou prestados entre clientes e profissionais. A contratação é de inteira responsabilidade das partes envolvidas.
+    <a href="#" onclick="openTerms(); return false;"> Leia nossos Termos de Uso completos.</a>
+  </div>
+  <button class="btn-notice-more" onclick="openTerms()">Ver Termos</button>
+  <button class="btn-notice-ok" onclick="closeNotice()">Entendi e Aceito</button>
+</div>
+
+<!-- MODAL TERMOS COMPLETOS -->
+<div class="terms-overlay" id="terms-overlay">
+  <div class="terms-box">
+    <h2>Termos de Uso</h2>
+    <div class="terms-date">Última atualização: março de 2025</div>
+
+    <div class="terms-section">
+      <h3>1. Sobre a Plataforma</h3>
+      <p>O <strong style="color:#fff">Minha Mão de Obra</strong> é uma plataforma digital de divulgação e conexão entre clientes e profissionais autônomos. Atuamos exclusivamente como intermediários, disponibilizando um espaço para que profissionais anunciem seus serviços e clientes os encontrem.</p>
+    </div>
+
+    <div class="terms-highlight">
+      ⚠️ <strong style="color:#fff">Isenção de Responsabilidade:</strong> O Minha Mão de Obra <strong style="color:#fff">não é parte</strong> em nenhum contrato de prestação de serviço estabelecido entre clientes e profissionais. Não garantimos, supervisionamos nem fiscalizamos a qualidade, execução, prazo ou resultado de qualquer serviço anunciado nesta plataforma.
+    </div>
+
+    <div class="terms-section">
+      <h3>2. Responsabilidade do Cliente</h3>
+      <p>O cliente é o único responsável por: verificar referências, avaliações e credenciais do profissional antes da contratação; formalizar acordos por escrito quando necessário; negociar preços, prazos e condições diretamente com o profissional; e arcar com eventuais danos, prejuízos ou desentendimentos decorrentes da contratação.</p>
+    </div>
+
+    <div class="terms-section">
+      <h3>3. Responsabilidade do Profissional</h3>
+      <p>O profissional cadastrado é o único responsável por: cumprir os serviços acordados com o cliente; possuir habilitação, certificação ou registro profissional exigido por lei; recolher tributos e contribuições sobre seus rendimentos; e responder por danos causados ao cliente ou a terceiros durante a prestação do serviço.</p>
+    </div>
+
+    <div class="terms-section">
+      <h3>4. Limitação de Responsabilidade</h3>
+      <p>O Minha Mão de Obra não se responsabiliza por: prejuízos financeiros, materiais ou morais sofridos por qualquer das partes; serviços não executados, mal executados ou executados com atraso; informações falsas ou enganosas inseridas por profissionais em seus perfis; e qualquer conflito, litígio ou disputa entre cliente e profissional.</p>
+    </div>
+
+    <div class="terms-section">
+      <h3>5. Aceitação dos Termos</h3>
+      <p>Ao utilizar esta plataforma — seja como cliente ou profissional — você declara ter lido, compreendido e aceito integralmente estes Termos de Uso, isentando o Minha Mão de Obra de qualquer responsabilidade sobre os serviços contratados entre as partes.</p>
+    </div>
+
+    <button class="btn-close-terms" onclick="closeTerms()">Li e Aceito os Termos</button>
+  </div>
+</div>
+
+<script>
+  // Notice bar
+  function closeNotice() {
+    document.getElementById('notice-bar').classList.add('hidden');
+    localStorage.setItem('notice-accepted', '1');
+  }
+  function openTerms() {
+    document.getElementById('terms-overlay').classList.add('open');
+  }
+  function closeTerms() {
+    document.getElementById('terms-overlay').classList.remove('open');
+    closeNotice();
+  }
+  document.getElementById('terms-overlay').addEventListener('click', function(e){
+    if(e.target === this) this.classList.remove('open');
+  });
+  // Se já aceitou antes, esconde o aviso
+  if(localStorage.getItem('notice-accepted')) {
+    document.getElementById('notice-bar').classList.add('hidden');
+  }
+</script>
+
+</body>
+</html>
