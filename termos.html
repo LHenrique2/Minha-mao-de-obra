@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termos de Uso — Minha Mão de Obra</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --amber: #E07B2F; --amber-light: #F5A25A; --amber-dark: #B85E1A;
+  --dark: #1A1208; --dark2: #2C1F0E;
+  --cream: #FAF5EC; --cream-mid: #F0E6D0;
+  --text: #3D2B10; --muted: #8A6E4A;
+  --green: #4A7C59; --green-light: #6BAF81;
+  --red: #C0392B; --border: #E8DDD0;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  background: rgba(26,18,8,0.96); backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 64px;
+  border-bottom: 1px solid rgba(224,123,47,0.2);
+}
+.nav-logo { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--amber-light); text-decoration: none; }
+.nav-logo span { color: #fff; }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-back { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.2s; }
+.nav-back:hover { color: var(--amber-light); }
+.nav-priv { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+.nav-priv:hover { color: rgba(255,255,255,0.6); }
+
+/* LAYOUT */
+.page-wrap { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; padding-top: 64px; }
+
+/* TOC SIDEBAR */
+.toc {
+  position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto;
+  background: #fff; border-right: 1px solid var(--border);
+  padding: 32px 20px;
+}
+.toc-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 16px; }
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.toc-list a {
+  display: block; padding: 8px 12px; border-radius: 8px;
+  font-size: 0.82rem; color: var(--muted); text-decoration: none;
+  transition: all 0.2s; font-weight: 500; line-height: 1.4;
+}
+.toc-list a:hover { background: var(--cream); color: var(--text); }
+.toc-list a.active { background: rgba(224,123,47,0.1); color: var(--amber); font-weight: 700; }
+.toc-divider { height: 1px; background: var(--border); margin: 14px 0; }
+.toc-badge {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: rgba(26,18,8,0.05); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px; margin-top: 20px;
+  font-size: 0.72rem; color: var(--muted); line-height: 1.5;
+}
+.toc-badge strong { color: var(--text); display: block; margin-bottom: 2px; }
+.toc-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.toc-action-btn {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  background: var(--cream); border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 10px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+  font-weight: 600; color: var(--text); cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+}
+.toc-action-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+/* CONTENT */
+.content { padding: 48px 60px; max-width: 860px; }
+
+/* PAGE HEADER */
+.page-header { margin-bottom: 48px; }
+.page-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--amber); margin-bottom: 12px; }
+.page-header h1 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 3.5vw, 3rem); color: var(--dark); line-height: 1.2; margin-bottom: 18px; }
+.page-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; }
+.meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--muted); }
+.meta-item strong { color: var(--text); }
+
+/* HIGHLIGHT BOX */
+.highlight {
+  background: rgba(224,123,47,0.08); border-left: 4px solid var(--amber);
+  border-radius: 0 16px 16px 0; padding: 20px 24px; margin: 28px 0;
+  font-size: 0.9rem; line-height: 1.85; color: var(--text);
+}
+.highlight strong { color: var(--amber-dark); }
+
+.info-box {
+  background: rgba(74,124,89,0.07); border: 1px solid rgba(74,124,89,0.2);
+  border-radius: 14px; padding: 18px 22px; margin: 20px 0;
+  font-size: 0.85rem; line-height: 1.7;
+}
+.info-box strong { color: var(--green); display: block; margin-bottom: 4px; }
+
+.warn-box {
+  background: rgba(192,57,43,0.06); border: 1px solid rgba(192,57,43,0.2);
+  border-radius: 14px; padding: 18px 22px; margin: 20px 0;
+  font-size: 0.85rem; line-height: 1.7;
+}
+.warn-box strong { color: var(--red); display: block; margin-bottom: 4px; }
+
+/* SECTIONS */
+.section { margin-bottom: 56px; scroll-margin-top: 84px; }
+.section h2 {
+  font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--dark);
+  margin-bottom: 18px; padding-bottom: 14px;
+  border-bottom: 2px solid var(--cream-mid);
+  display: flex; align-items: center; gap: 10px;
+}
+.section h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin: 22px 0 10px; }
+.section p { font-size: 0.9rem; line-height: 1.9; color: #5A3E1B; margin-bottom: 14px; }
+.section ul, .section ol { padding-left: 22px; margin-bottom: 16px; }
+.section li { font-size: 0.88rem; line-height: 1.85; color: #5A3E1B; margin-bottom: 6px; }
+.section a { color: var(--amber); text-decoration: none; font-weight: 600; }
+.section a:hover { text-decoration: underline; }
+.section strong { color: var(--dark); }
+
+/* PLAN TABLE */
+.plan-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.82rem; border-radius: 14px; overflow: hidden; }
+.plan-table thead tr { background: var(--dark); color: #fff; }
+.plan-table th { padding: 14px 16px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+.plan-table td { padding: 12px 16px; border-bottom: 1px solid var(--cream-mid); vertical-align: top; line-height: 1.5; }
+.plan-table tr:nth-child(even) td { background: #fff; }
+.plan-table tr:nth-child(odd) td { background: var(--cream); }
+.plan-table tr:last-child td { border-bottom: none; }
+.check-yes { color: var(--green); font-weight: 700; }
+.check-no  { color: var(--muted); }
+
+/* CONDUCT LIST */
+.conduct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+.conduct-card {
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 18px;
+}
+.conduct-card.allowed { border-left: 3px solid var(--green); }
+.conduct-card.forbidden { border-left: 3px solid var(--red); }
+.conduct-card h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.conduct-card.allowed h4 { color: var(--green); }
+.conduct-card.forbidden h4 { color: var(--red); }
+.conduct-card ul { padding-left: 16px; }
+.conduct-card li { font-size: 0.78rem; color: var(--muted); line-height: 1.7; margin-bottom: 4px; }
+
+/* CONTACT CARD */
+.contact-card {
+  background: var(--dark); color: #fff;
+  border-radius: 20px; padding: 32px;
+  display: flex; align-items: flex-start; gap: 20px;
+  margin-top: 24px;
+}
+.contact-icon { font-size: 2.5rem; flex-shrink: 0; }
+.contact-info h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; color: var(--amber-light); margin-bottom: 8px; }
+.contact-info p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 16px; }
+.contact-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.contact-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  color: #fff; padding: 9px 18px; border-radius: 100px;
+  font-size: 0.8rem; font-weight: 600; text-decoration: none;
+  transition: background 0.2s;
+}
+.contact-btn:hover { background: rgba(224,123,47,0.3); }
+
+/* VERSION HISTORY */
+.version-list { display: flex; flex-direction: column; gap: 10px; }
+.version-item {
+  display: flex; align-items: center; gap: 14px;
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 14px 18px;
+}
+.version-num { font-family: 'Fraunces', serif; font-size: 1rem; color: var(--amber); font-weight: 700; min-width: 48px; }
+.version-date { font-size: 0.78rem; color: var(--muted); min-width: 110px; }
+.version-desc { font-size: 0.82rem; color: var(--text); flex: 1; }
+.version-current { background: rgba(224,123,47,0.05); border-color: rgba(224,123,47,0.3); }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@media (max-width: 860px) {
+  .page-wrap { grid-template-columns: 1fr; }
+  .toc { display: none; }
+  .content { padding: 28px 22px; }
+  .conduct-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">Minha <span>Mão de Obra</span></a>
+  <div class="nav-right">
+    <a href="privacidade.html" class="nav-priv">🔒 Privacidade</a>
+    <a href="index.html" class="nav-back">← Voltar ao site</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- TOC -->
+  <aside class="toc">
+    <div class="toc-title">Nesta página</div>
+    <ul class="toc-list" id="toc-list">
+      <li><a href="#intro" class="active">1. Introdução</a></li>
+      <li><a href="#definicoes">2. Definições</a></li>
+      <li><a href="#cadastro">3. Cadastro e Conta</a></li>
+      <li><a href="#planos">4. Planos e Pagamentos</a></li>
+      <li><a href="#conduta">5. Regras de Conduta</a></li>
+      <li><a href="#responsabilidades">6. Responsabilidades</a></li>
+      <li><a href="#servicos">7. Serviços Prestados</a></li>
+      <li><a href="#propriedade">8. Propriedade Intelectual</a></li>
+      <li><a href="#suspensao">9. Suspensão e Encerramento</a></li>
+      <li><a href="#limitacao">10. Limitação de Responsabilidade</a></li>
+      <li><a href="#legislacao">11. Lei Aplicável</a></li>
+      <li><a href="#alteracoes">12. Alterações</a></li>
+      <li><a href="#contato">13. Contato</a></li>
+    </ul>
+    <div class="toc-divider"></div>
+    <div class="toc-badge">
+      <span style="font-size:1.2rem">⚖️</span>
+      <div><strong>Versão atual: 1.0</strong>Vigente desde Março de 2025. Em conformidade com o Código de Defesa do Consumidor e a LGPD.</div>
+    </div>
+    <div class="toc-actions">
+      <a href="privacidade.html" class="toc-action-btn">🔒 Política de Privacidade</a>
+      <a href="cadastro.html" class="toc-action-btn">✍️ Criar conta grátis</a>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <div class="page-header" style="animation:fadeUp 0.5s ease both">
+      <div class="page-label">Documentos Legais</div>
+      <h1>Termos de Uso</h1>
+      <div class="page-meta">
+        <div class="meta-item">📅 <strong>Versão:</strong> 1.0 — Março de 2025</div>
+        <div class="meta-item">⚖️ <strong>Lei:</strong> CDC, CC/2002 e LGPD</div>
+        <div class="meta-item">🌐 <strong>Aplica-se a:</strong> minhamaodeobra.com.br</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>Leia com atenção antes de usar a plataforma.</strong> Ao criar uma conta, publicar uma demanda, se cadastrar como profissional ou navegar no site, você concorda com estes Termos de Uso. Se não concordar com algum ponto, por favor não utilize a plataforma. Dúvidas? Fale conosco em <a href="mailto:contato@minhamaodeobra.com.br" style="color:var(--amber-dark)">contato@minhamaodeobra.com.br</a>.
+    </div>
+
+    <!-- 1. INTRO -->
+    <section class="section" id="intro">
+      <h2>1. Introdução</h2>
+      <p>A plataforma <strong>Minha Mão de Obra</strong> ("Plataforma", "nós", "nosso") é um marketplace digital que conecta clientes que precisam de serviços a profissionais autônomos qualificados. Somos apenas intermediários — não somos empregadores, agência de empregos, nem parte contratante dos serviços prestados entre usuários.</p>
+      <p>Estes Termos de Uso ("Termos") regulam o acesso e uso de todos os serviços oferecidos pela Plataforma, incluindo o site, aplicativo, e demais funcionalidades disponibilizadas.</p>
+      <p>A utilização da Plataforma implica na leitura, compreensão e aceitação integral destes Termos, que podem ser atualizados periodicamente. A versão mais recente sempre estará disponível nesta página.</p>
+      <div class="info-box">
+        <strong>📋 Documentos complementares</strong>
+        Estes Termos devem ser lidos em conjunto com nossa <a href="privacidade.html">Política de Privacidade</a>, que regula o tratamento dos seus dados pessoais de acordo com a LGPD (Lei 13.709/2018).
+      </div>
+    </section>
+
+    <!-- 2. DEFINIÇÕES -->
+    <section class="section" id="definicoes">
+      <h2>2. Definições</h2>
+      <p>Para os fins destes Termos, os seguintes termos têm os significados indicados:</p>
+      <ul>
+        <li><strong>Plataforma:</strong> o site Minha Mão de Obra e todas as suas funcionalidades</li>
+        <li><strong>Profissional:</strong> pessoa física autônoma cadastrada que oferta serviços na Plataforma</li>
+        <li><strong>Cliente:</strong> pessoa física ou jurídica que busca ou contrata serviços na Plataforma</li>
+        <li><strong>Usuário:</strong> qualquer pessoa que acesse ou utilize a Plataforma, seja Profissional ou Cliente</li>
+        <li><strong>Demanda:</strong> publicação feita por um Cliente descrevendo um serviço que precisa contratar</li>
+        <li><strong>Proposta:</strong> resposta feita por um Profissional a uma Demanda</li>
+        <li><strong>Plano:</strong> modalidade de assinatura paga que concede benefícios adicionais ao Profissional</li>
+        <li><strong>Conteúdo:</strong> textos, imagens, fotos, vídeos, avaliações e demais informações publicadas na Plataforma</li>
+        <li><strong>Conta:</strong> perfil criado pelo Usuário para acessar os recursos da Plataforma</li>
+      </ul>
+    </section>
+
+    <!-- 3. CADASTRO -->
+    <section class="section" id="cadastro">
+      <h2>3. Cadastro e Conta</h2>
+
+      <h3>3.1 Requisitos para cadastro</h3>
+      <ul>
+        <li>Ter no mínimo <strong>18 anos</strong> de idade</li>
+        <li>Possuir CPF válido (para Profissionais)</li>
+        <li>Fornecer informações verdadeiras, precisas e atualizadas</li>
+        <li>Ter capacidade legal para firmar contratos no Brasil</li>
+        <li>Não ter sido suspenso ou banido anteriormente da Plataforma</li>
+      </ul>
+
+      <h3>3.2 Responsabilidades do Usuário sobre sua conta</h3>
+      <ul>
+        <li>Manter sua senha em sigilo absoluto — você é responsável por toda atividade realizada com sua conta</li>
+        <li>Notificar imediatamente a Plataforma em caso de acesso não autorizado: <a href="mailto:seguranca@minhamaodeobra.com.br">seguranca@minhamaodeobra.com.br</a></li>
+        <li>Manter seus dados de contato (e-mail, WhatsApp) sempre atualizados</li>
+        <li>Não compartilhar credenciais de acesso com terceiros</li>
+        <li>Não criar múltiplas contas para o mesmo CPF</li>
+      </ul>
+
+      <h3>3.3 Verificação de identidade</h3>
+      <p>A Plataforma poderá solicitar documentos adicionais para verificar a identidade do Profissional antes de ativar o badge "Verificado". A recusa em fornecer documentação solicitada pode resultar na limitação de funcionalidades da conta.</p>
+
+      <div class="warn-box">
+        <strong>⚠️ Informações falsas</strong>
+        O cadastro com dados falsos ou de terceiros é crime previsto no Art. 299 do Código Penal Brasileiro e resultará no banimento imediato da conta, sem direito a reembolso de valores pagos.
+      </div>
+    </section>
+
+    <!-- 4. PLANOS -->
+    <section class="section" id="planos">
+      <h2>4. Planos e Pagamentos</h2>
+
+      <h3>4.1 Planos disponíveis</h3>
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th>Recurso</th>
+            <th>🆓 Gratuito</th>
+            <th>🚀 Pro — R$39/mês</th>
+            <th>💎 Premium — R$89/mês</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Perfil público</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+          <tr><td>Aparecer nas buscas</td><td class="check-yes">✓</td><td class="check-yes">✓ Destaque</td><td class="check-yes">✓ Topo</td></tr>
+          <tr><td>Respostas a demandas/mês</td><td>3</td><td>Ilimitadas</td><td>Ilimitadas</td></tr>
+          <tr><td>Fotos no portfólio</td><td>3</td><td>20</td><td>Ilimitadas</td></tr>
+          <tr><td>Badge verificado</td><td class="check-no">✗</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+          <tr><td>Relatório de visitas</td><td class="check-no">✗</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+          <tr><td>Banner na página inicial</td><td class="check-no">✗</td><td class="check-no">✗</td><td class="check-yes">✓</td></tr>
+          <tr><td>Gerente de conta</td><td class="check-no">✗</td><td class="check-no">✗</td><td class="check-yes">✓</td></tr>
+          <tr><td>Suporte prioritário</td><td class="check-no">✗</td><td>Email</td><td>24h WhatsApp</td></tr>
+        </tbody>
+      </table>
+
+      <h3>4.2 Cobrança e renovação</h3>
+      <ul>
+        <li>As assinaturas pagas são <strong>recorrentes</strong> — renovam automaticamente ao final de cada período</li>
+        <li>A cobrança ocorre no mesmo dia do mês em que a assinatura foi iniciada</li>
+        <li>No plano anual, a cobrança é feita de uma única vez por ano com desconto de 30%</li>
+        <li>Em caso de falha no pagamento, a conta será rebaixada para o plano gratuito após 3 tentativas</li>
+      </ul>
+
+      <h3>4.3 Cancelamento e reembolso</h3>
+      <ul>
+        <li>O cancelamento pode ser feito a qualquer momento, sem multa ou fidelidade</li>
+        <li>Após o cancelamento, o acesso aos recursos pagos permanece até o fim do período já pago</li>
+        <li><strong>Garantia de 30 dias:</strong> caso não fique satisfeito, devolvemos 100% do valor da primeira mensalidade — sem perguntas</li>
+        <li>Para solicitar reembolso: <a href="mailto:financeiro@minhamaodeobra.com.br">financeiro@minhamaodeobra.com.br</a></li>
+        <li>Reembolsos são processados em até <strong>10 dias úteis</strong> pelo mesmo meio de pagamento</li>
+      </ul>
+
+      <h3>4.4 Alteração de preços</h3>
+      <p>A Plataforma se reserva o direito de alterar os preços dos planos com aviso prévio de <strong>30 dias</strong> por e-mail. O novo preço será aplicado somente na próxima renovação após o aviso.</p>
+    </section>
+
+    <!-- 5. CONDUTA -->
+    <section class="section" id="conduta">
+      <h2>5. Regras de Conduta</h2>
+      <p>Para manter um ambiente seguro e de confiança para todos, os Usuários devem seguir as regras abaixo:</p>
+
+      <div class="conduct-grid">
+        <div class="conduct-card allowed">
+          <h4>✅ Permitido</h4>
+          <ul>
+            <li>Publicar serviços e demandas reais</li>
+            <li>Negociar preços diretamente com o contratante</li>
+            <li>Publicar avaliações honestas após serviços</li>
+            <li>Compartilhar portfólio e trabalhos anteriores</li>
+            <li>Solicitar orçamentos comparativos</li>
+            <li>Indicar outros profissionais</li>
+          </ul>
+        </div>
+        <div class="conduct-card forbidden">
+          <h4>🚫 Proibido</h4>
+          <ul>
+            <li>Criar contas falsas ou duplicadas</li>
+            <li>Publicar avaliações fraudulentas</li>
+            <li>Divulgar dados pessoais de outros usuários</li>
+            <li>Usar linguagem ofensiva, racista ou discriminatória</li>
+            <li>Oferecer serviços ilegais ou irregulares</li>
+            <li>Spam ou contato não solicitado em massa</li>
+            <li>Desviar negociações para fora da plataforma para burlar taxas</li>
+            <li>Fazer ameaças ou assediar outros usuários</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Violações às regras de conduta podem resultar em advertência, suspensão temporária ou banimento permanente, a critério exclusivo da Plataforma.</p>
+    </section>
+
+    <!-- 6. RESPONSABILIDADES -->
+    <section class="section" id="responsabilidades">
+      <h2>6. Responsabilidades das Partes</h2>
+
+      <h3>6.1 Responsabilidades da Plataforma</h3>
+      <ul>
+        <li>Manter o site disponível com esforços razoáveis (mínimo 99% do tempo mensal)</li>
+        <li>Proteger os dados pessoais dos usuários conforme a LGPD</li>
+        <li>Moderar conteúdos impróprios quando reportados</li>
+        <li>Oferecer suporte dentro dos prazos acordados por plano</li>
+        <li>Notificar os usuários em caso de indisponibilidade programada com antecedência mínima de 24h</li>
+      </ul>
+
+      <h3>6.2 Responsabilidades do Profissional</h3>
+      <ul>
+        <li>Executar os serviços contratados com qualidade, segurança e dentro do prazo acordado</li>
+        <li>Possuir as habilitações, licenças e seguros necessários para o serviço ofertado</li>
+        <li>Manter suas informações de perfil (localização, categoria, preço) sempre atualizadas</li>
+        <li>Responder às mensagens de clientes em tempo razoável</li>
+        <li>Emitir nota fiscal ou recibo pelos serviços prestados quando solicitado</li>
+        <li>Cumprir todas as obrigações tributárias como autônomo (MEI, Carnê-Leão etc.)</li>
+      </ul>
+
+      <h3>6.3 Responsabilidades do Cliente</h3>
+      <ul>
+        <li>Fornecer informações precisas sobre o serviço desejado</li>
+        <li>Garantir condições seguras de acesso ao local do serviço</li>
+        <li>Efetuar o pagamento acordado após a conclusão satisfatória do serviço</li>
+        <li>Publicar avaliações honestas e baseadas na experiência real</li>
+        <li>Respeitar os profissionais e não discriminá-los por qualquer motivo</li>
+      </ul>
+    </section>
+
+    <!-- 7. SERVIÇOS -->
+    <section class="section" id="servicos">
+      <h2>7. Serviços Prestados entre Usuários</h2>
+
+      <div class="warn-box">
+        <strong>⚠️ A Minha Mão de Obra é uma plataforma de intermediação</strong>
+        Não somos parte dos contratos de serviço firmados entre Clientes e Profissionais. Não contratamos, empregamos, supervisionamos nem garantimos os serviços prestados pelos profissionais cadastrados.
+      </div>
+
+      <h3>7.1 Contratação de serviços</h3>
+      <p>A contratação de qualquer serviço é feita diretamente entre o Cliente e o Profissional. A Plataforma apenas facilita o encontro entre as partes. Recomendamos que:</p>
+      <ul>
+        <li>Formalize o serviço com um contrato escrito ou, no mínimo, um registro das condições via WhatsApp</li>
+        <li>Verifique as avaliações do profissional antes de contratar</li>
+        <li>Solicite orçamentos de pelo menos 3 profissionais para comparar</li>
+        <li>Não efetue pagamentos antecipados de valores elevados sem garantias</li>
+        <li>Exija nota fiscal ou recibo após a conclusão do serviço</li>
+      </ul>
+
+      <h3>7.2 Disputas entre usuários</h3>
+      <p>Em caso de conflito entre Cliente e Profissional, a Plataforma poderá atuar como mediadora, mas não tem obrigação legal de resolver disputas. Para acionar a mediação: <a href="mailto:mediacao@minhamaodeobra.com.br">mediacao@minhamaodeobra.com.br</a>.</p>
+      <p>Conflitos não resolvidos pela mediação deverão ser tratados diretamente entre as partes, podendo recorrer ao Procon, Juizado Especial Cível ou às vias judiciais cabíveis.</p>
+    </section>
+
+    <!-- 8. PROPRIEDADE INTELECTUAL -->
+    <section class="section" id="propriedade">
+      <h2>8. Propriedade Intelectual</h2>
+
+      <h3>8.1 Conteúdo da Plataforma</h3>
+      <p>Todo o conteúdo criado pela Plataforma — incluindo o nome "Minha Mão de Obra", logotipo, design, textos, código-fonte e funcionalidades — é de propriedade exclusiva da Plataforma e está protegido por direitos autorais e de propriedade intelectual.</p>
+      <p>É proibida a reprodução, cópia, distribuição ou uso comercial de qualquer elemento da Plataforma sem autorização expressa e por escrito.</p>
+
+      <h3>8.2 Conteúdo publicado por Usuários</h3>
+      <p>Ao publicar fotos, textos ou qualquer conteúdo na Plataforma, o Usuário concede à Plataforma uma <strong>licença não exclusiva, gratuita e mundial</strong> para exibir, reproduzir e distribuir esse conteúdo exclusivamente dentro da Plataforma e para fins de divulgação.</p>
+      <p>O Usuário declara que possui todos os direitos sobre o conteúdo publicado e que este não viola direitos de terceiros.</p>
+    </section>
+
+    <!-- 9. SUSPENSÃO -->
+    <section class="section" id="suspensao">
+      <h2>9. Suspensão e Encerramento de Conta</h2>
+
+      <h3>9.1 Pela Plataforma</h3>
+      <p>A Plataforma pode suspender ou encerrar uma conta, sem aviso prévio, nos seguintes casos:</p>
+      <ul>
+        <li>Violação destes Termos de Uso</li>
+        <li>Cadastro com informações falsas</li>
+        <li>Conduta abusiva ou fraudulenta</li>
+        <li>Inadimplência no pagamento de planos por mais de 30 dias</li>
+        <li>Determinação judicial ou de autoridade competente</li>
+      </ul>
+      <p>Em casos de violações graves, o encerramento será permanente e o usuário não poderá se recadastrar, inclusive sob outro CPF.</p>
+
+      <h3>9.2 Pelo Usuário</h3>
+      <p>O Usuário pode solicitar o encerramento da sua conta a qualquer momento pelo e-mail <a href="mailto:contato@minhamaodeobra.com.br">contato@minhamaodeobra.com.br</a>. Após a confirmação:</p>
+      <ul>
+        <li>O perfil público será removido em até 48 horas</li>
+        <li>Os dados pessoais serão excluídos conforme a Política de Privacidade</li>
+        <li>Assinaturas ativas serão canceladas sem reembolso proporcional</li>
+        <li>Avaliações e histórico de demandas poderão ser mantidos de forma anonimizada</li>
+      </ul>
+    </section>
+
+    <!-- 10. LIMITAÇÃO -->
+    <section class="section" id="limitacao">
+      <h2>10. Limitação de Responsabilidade</h2>
+
+      <p>Na máxima extensão permitida pela legislação brasileira, a Plataforma não será responsável por:</p>
+      <ul>
+        <li>Danos causados por serviços prestados ou não prestados por Profissionais cadastrados</li>
+        <li>Perdas financeiras decorrentes de acordos entre Clientes e Profissionais</li>
+        <li>Qualidade, segurança ou resultado final dos serviços contratados</li>
+        <li>Indisponibilidade temporária do site por razões técnicas, manutenções ou casos de força maior</li>
+        <li>Conteúdo publicado por Usuários que viole direitos de terceiros</li>
+        <li>Danos indiretos, consequentes, especiais ou punitivos</li>
+        <li>Perda de dados causada por vírus, ataques hackers ou falhas de terceiros</li>
+      </ul>
+
+      <p>A responsabilidade total da Plataforma, em qualquer caso, não excederá o valor pago pelo Usuário nos últimos 3 meses de assinatura.</p>
+
+      <div class="info-box">
+        <strong>💡 Dica para se proteger como cliente</strong>
+        Verifique sempre as avaliações, peça referências, formalize o serviço por escrito e nunca pague o valor total antes do início da execução. O CDC (Código de Defesa do Consumidor) protege seus direitos em caso de serviço mal prestado.
+      </div>
+    </section>
+
+    <!-- 11. LEGISLAÇÃO -->
+    <section class="section" id="legislacao">
+      <h2>11. Lei Aplicável e Foro</h2>
+      <p>Estes Termos são regidos pelas leis brasileiras, especialmente:</p>
+      <ul>
+        <li><strong>Código Civil Brasileiro</strong> (Lei 10.406/2002)</li>
+        <li><strong>Código de Defesa do Consumidor</strong> (Lei 8.078/1990)</li>
+        <li><strong>Marco Civil da Internet</strong> (Lei 12.965/2014)</li>
+        <li><strong>Lei Geral de Proteção de Dados</strong> (Lei 13.709/2018)</li>
+      </ul>
+      <p>Fica eleito o foro da comarca de <strong>São Paulo/SP</strong> para dirimir quaisquer controvérsias decorrentes destes Termos, ressalvado o direito do consumidor de optar pelo foro de seu domicílio.</p>
+    </section>
+
+    <!-- 12. ALTERAÇÕES -->
+    <section class="section" id="alteracoes">
+      <h2>12. Alterações dos Termos</h2>
+      <p>A Plataforma pode atualizar estes Termos a qualquer momento. Quando houver alterações relevantes, notificaremos os usuários com pelo menos <strong>15 dias de antecedência</strong> por e-mail e/ou por aviso em destaque no site.</p>
+      <p>O uso continuado da Plataforma após as alterações constituirá aceitação automática dos novos Termos. Caso não concorde, você poderá encerrar sua conta conforme descrito na seção 9.2.</p>
+
+      <div class="version-list">
+        <div class="version-item version-current">
+          <div class="version-num">v1.0</div>
+          <div class="version-date">Março de 2025</div>
+          <div class="version-desc">Versão inicial — lançamento da plataforma</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. CONTATO -->
+    <section class="section" id="contato">
+      <h2>13. Contato</h2>
+      <p>Dúvidas, reclamações ou solicitações relacionadas a estes Termos devem ser enviadas para:</p>
+      <div class="contact-card">
+        <div class="contact-icon">📬</div>
+        <div class="contact-info">
+          <h3>Fale com a Minha Mão de Obra</h3>
+          <p>Nossa equipe responde em até <strong style="color:var(--amber-light)">2 dias úteis</strong>. Para assuntos urgentes de segurança, priorizamos em até 24h.</p>
+          <div class="contact-btns">
+            <a href="mailto:contato@minhamaodeobra.com.br" class="contact-btn">📧 contato@minhamaodeobra.com.br</a>
+            <a href="mailto:juridico@minhamaodeobra.com.br" class="contact-btn">⚖️ juridico@minhamaodeobra.com.br</a>
+            <a href="privacidade.html" class="contact-btn">🔒 Privacidade & LGPD</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// TOC highlight on scroll
+const sections = document.querySelectorAll('.section');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-15% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
