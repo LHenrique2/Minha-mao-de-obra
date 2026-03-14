@@ -153,8 +153,8 @@ nav {
 <body>
 
 <nav>
-  <a class="nav-logo" href="maoDeObra.html">Minha <span>Mão de Obra</span></a>
-  <a class="nav-back" href="maoDeObra.html">← Voltar ao site</a>
+  <a class="nav-logo" href="index.html">Minha <span>Mão de Obra</span></a>
+  <a class="nav-back" href="index.html">← Voltar ao site</a>
 </nav>
 
 <div class="page-wrap">
@@ -206,7 +206,7 @@ nav {
       <p>Ao criar uma conta, publicar uma demanda, se cadastrar como profissional ou simplesmente navegar em nosso site, você concorda com os termos desta política. Caso não concorde, por favor não utilize a plataforma.</p>
       <div class="info-box">
         <strong>👤 Quem é o Controlador dos seus dados?</strong>
-        Minha Mão de Obra — CNPJ em processo de regularização. Responsável pelas decisões sobre o tratamento de dados pessoais na plataforma. Contato: privacidade@minhamaodeobra.com.br
+        Minha Mão de Obra — CNPJ em processo de regularização. Responsável pelas decisões sobre o tratamento de dados pessoais na plataforma. Contato: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e494968d9285878d80858081a4898d8a8c8589858b80818b869685ca878b89ca8696">[email&#160;protected]</a>
       </div>
     </section>
 
@@ -334,7 +334,7 @@ nav {
     <!-- 7. DIREITOS -->
     <section class="policy-section" id="direitos">
       <h2>7. Seus direitos — LGPD (Art. 18)</h2>
-      <p>Como titular dos seus dados, você possui os seguintes direitos garantidos pela LGPD. Para exercê-los, entre em contato pelo e-mail <a href="mailto:privacidade@minhamaodeobra.com.br">privacidade@minhamaodeobra.com.br</a>. Responderemos em até <strong>15 dias úteis</strong>.</p>
+      <p>Como titular dos seus dados, você possui os seguintes direitos garantidos pela LGPD. Para exercê-los, entre em contato pelo e-mail <a href="/cdn-cgi/l/email-protection#1666647f6077757f72777273567b7f787e777b77797273797464773875797b387464"><span class="__cf_email__" data-cfemail="6f1f1d06190e0c060b0e0b0a2f020601070e020e000b0a000d1d0e410c0002410d1d">[email&#160;protected]</span></a>. Responderemos em até <strong>15 dias úteis</strong>.</p>
 
       <div class="rights-grid">
         <div class="right-card">
@@ -396,7 +396,7 @@ nav {
     <section class="policy-section" id="menores">
       <h2>9. Menores de idade</h2>
       <p>Nossa plataforma é destinada exclusivamente a <strong>maiores de 18 anos</strong>. Não coletamos intencionalmente dados de menores. Se identificarmos que dados de menores foram coletados sem consentimento parental, os eliminaremos imediatamente.</p>
-      <p>Se você é responsável por um menor e acredita que ele forneceu dados à plataforma, entre em contato: <a href="mailto:privacidade@minhamaodeobra.com.br">privacidade@minhamaodeobra.com.br</a></p>
+      <p>Se você é responsável por um menor e acredita que ele forneceu dados à plataforma, entre em contato: <a href="/cdn-cgi/l/email-protection#d9a9abb0afb8bab0bdb8bdbc99b4b0b7b1b8b4b8b6bdbcb6bbabb8f7bab6b4f7bbab"><span class="__cf_email__" data-cfemail="fd8d8f948b9c9e94999c9998bd909493959c909c929998929f8f9cd39e9290d39f8f">[email&#160;protected]</span></a></p>
     </section>
 
     <!-- 10. ALTERAÇÕES -->
@@ -421,7 +421,7 @@ nav {
           <h3>Encarregado de Proteção de Dados (DPO)</h3>
           <p>Responsável por garantir que a plataforma trate seus dados em conformidade com a LGPD. Atendemos solicitações em até <strong style="color:var(--amber-light)">15 dias úteis</strong>.</p>
           <div class="dpo-contact">
-            <a href="mailto:privacidade@minhamaodeobra.com.br" class="dpo-btn">📧 privacidade@minhamaodeobra.com.br</a>
+            <a href="/cdn-cgi/l/email-protection#acdcdec5dacdcfc5c8cdc8c9ecc1c5c2c4cdc1cdc3c8c9c3cedecd82cfc3c182cede" class="dpo-btn">📧 <span class="__cf_email__" data-cfemail="fc8c8e958a9d9f95989d9899bc919592949d919d939899939e8e9dd29f9391d29e8e">[email&#160;protected]</span></a>
             <a href="https://www.gov.br/anpd" target="_blank" class="dpo-btn">⚖️ Portal da ANPD</a>
           </div>
         </div>
@@ -438,25 +438,10 @@ nav {
   <button class="btn-accept" onclick="acceptCookies()">✓ Aceitar todos</button>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // TOC highlight on scroll
 const sections = document.querySelectorAll('.policy-section');
 const tocLinks = document.querySelectorAll('.toc-list a');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      tocLinks.forEach(l => l.classList.remove('active'));
-      const active = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
-      if (active) active.classList.add('active');
-    }
-  });
-}, { rootMargin: '-20% 0px -70% 0px' });
-sections.forEach(s => observer.observe(s));
-
-// Cookies banner
-function acceptCookies() { localStorage.setItem('cookies','accepted'); document.getElementById('privacy-banner').classList.add('hidden'); }
-function declineCookies() { localStorage.setItem('cookies','declined'); document.getElementById('privacy-banner').classList.add('hidden'); }
-if (localStorage.getItem('cookies')) document.getElementById('privacy-banner').classList.add('hidden');
-</script>
-</body>
-</html>
+    if (e.isInt
