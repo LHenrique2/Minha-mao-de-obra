@@ -1939,19 +1939,377 @@
   </div>
 </div>
 
+<!-- MODAL PERFIL DO PROFISSIONAL -->
+<style>
+.prof-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px); z-index: 300;
+  display: none; align-items: center; justify-content: center; padding: 16px;
+}
+.prof-overlay.open { display: flex; }
+.prof-modal {
+  background: var(--cream); border-radius: 28px;
+  width: 100%; max-width: 680px; max-height: 90vh;
+  overflow-y: auto; position: relative;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp { from { transform:translateY(40px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+
+/* MODAL HEADER */
+.pm-header {
+  background: var(--dark);
+  padding: 32px 32px 24px;
+  border-radius: 28px 28px 0 0;
+  position: relative;
+}
+.pm-close {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(255,255,255,0.1); border: none;
+  width: 34px; height: 34px; border-radius: 50%;
+  color: rgba(255,255,255,0.6); font-size: 1rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.pm-close:hover { background: rgba(255,255,255,0.2); }
+.pm-top { display: flex; gap: 20px; align-items: flex-start; }
+.pm-avatar {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--dark2), #3a2a12);
+  border: 3px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.4rem; flex-shrink: 0;
+}
+.pm-info { flex: 1; }
+.pm-badges { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.pm-badge { font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; }
+.pm-badge-cat { background: rgba(224,123,47,0.2); color: var(--amber-light); }
+.pm-badge-avail-yes { background: rgba(74,124,89,0.2); color: #6BAF81; }
+.pm-badge-avail-no { background: rgba(138,110,74,0.2); color: var(--muted); }
+.pm-badge-feat { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+.pm-name { font-family: 'Fraunces', serif; font-size: 1.5rem; color: #fff; margin-bottom: 4px; }
+.pm-role { font-size: 0.88rem; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
+.pm-rating { display: flex; align-items: center; gap: 8px; }
+.pm-stars { color: var(--amber-light); font-size: 0.9rem; letter-spacing: 1px; }
+.pm-rating-num { font-weight: 700; color: #fff; font-size: 0.95rem; }
+.pm-reviews { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+
+.pm-stats { display: flex; gap: 0; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 18px; }
+.pm-stat { flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
+.pm-stat:last-child { border-right: none; }
+.pm-stat-val { font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--amber-light); }
+.pm-stat-label { font-size: 0.68rem; color: rgba(255,255,255,0.35); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* MODAL BODY */
+.pm-body { padding: 28px 32px; }
+.pm-section { margin-bottom: 24px; }
+.pm-section-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 12px; }
+.pm-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.pm-tag { background: #fff; border: 1.5px solid var(--border); border-radius: 100px; padding: 5px 14px; font-size: 0.8rem; color: var(--text); font-weight: 500; }
+.pm-about { font-size: 0.88rem; color: #5A3E1B; line-height: 1.8; }
+.pm-price-box {
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 18px 20px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.pm-price-val { font-family: 'Fraunces', serif; font-size: 1.8rem; color: var(--amber); }
+.pm-price-label { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+.pm-price-right { text-align: right; font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+/* PORTFOLIO */
+.pm-portfolio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.pm-port-item {
+  aspect-ratio: 1; border-radius: 12px;
+  background: linear-gradient(135deg, var(--cream-mid), var(--border));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; overflow: hidden; cursor: pointer;
+  transition: transform 0.2s;
+}
+.pm-port-item:hover { transform: scale(1.03); }
+
+/* INFO GRID */
+.pm-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pm-info-item { background: #fff; border: 1.5px solid var(--border); border-radius: 12px; padding: 14px; }
+.pm-info-item .ii-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; font-weight: 700; }
+.pm-info-item .ii-val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+
+/* FOOTER ACTIONS */
+.pm-footer {
+  padding: 20px 32px 28px;
+  border-top: 1px solid var(--cream-mid);
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.btn-whats {
+  flex: 1; background: #25D366; color: #fff; border: none;
+  padding: 15px 28px; border-radius: 100px;
+  font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: all 0.2s; min-width: 200px;
+}
+.btn-whats:hover { background: #1eb855; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,211,102,0.3); }
+.btn-share {
+  background: transparent; border: 1.5px solid var(--border);
+  color: var(--muted); padding: 15px 20px; border-radius: 100px;
+  font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.88rem;
+  cursor: pointer; transition: all 0.2s;
+}
+.btn-share:hover { border-color: var(--amber); color: var(--amber); }
+.pm-lgpd-note { width: 100%; font-size: 0.72rem; color: var(--muted); text-align: center; line-height: 1.5; }
+.pm-lgpd-note a { color: var(--amber); text-decoration: none; }
+</style>
+
+<div class="prof-overlay" id="prof-overlay" onclick="if(event.target===this)closeProfModal()">
+  <div class="prof-modal" id="prof-modal">
+    <div class="pm-header">
+      <button class="pm-close" onclick="closeProfModal()">✕</button>
+      <div class="pm-top">
+        <div class="pm-avatar" id="pm-avatar">👷</div>
+        <div class="pm-info">
+          <div class="pm-badges" id="pm-badges"></div>
+          <div class="pm-name" id="pm-name">—</div>
+          <div class="pm-role" id="pm-role">—</div>
+          <div class="pm-rating">
+            <span class="pm-stars" id="pm-stars">★★★★★</span>
+            <span class="pm-rating-num" id="pm-rating-num">—</span>
+            <span class="pm-reviews" id="pm-reviews">—</span>
+          </div>
+        </div>
+      </div>
+      <div class="pm-stats">
+        <div class="pm-stat"><div class="pm-stat-val" id="pm-stat-jobs">200+</div><div class="pm-stat-label">Serviços feitos</div></div>
+        <div class="pm-stat"><div class="pm-stat-val" id="pm-stat-exp">5 anos</div><div class="pm-stat-label">Experiência</div></div>
+        <div class="pm-stat"><div class="pm-stat-val" id="pm-stat-resp">~1h</div><div class="pm-stat-label">Tempo de resposta</div></div>
+        <div class="pm-stat"><div class="pm-stat-val" id="pm-stat-rate">98%</div><div class="pm-stat-label">Satisfação</div></div>
+      </div>
+    </div>
+
+    <div class="pm-body">
+
+      <div class="pm-section">
+        <div class="pm-section-title">Valor do serviço</div>
+        <div class="pm-price-box">
+          <div>
+            <div class="pm-price-val" id="pm-price">R$—</div>
+            <div class="pm-price-label" id="pm-price-label">por hora</div>
+          </div>
+          <div class="pm-price-right" id="pm-price-right">Orçamento final<br>combinado no contato</div>
+        </div>
+      </div>
+
+      <div class="pm-section">
+        <div class="pm-section-title">Serviços que oferece</div>
+        <div class="pm-tags" id="pm-tags"></div>
+      </div>
+
+      <div class="pm-section">
+        <div class="pm-section-title">Sobre o profissional</div>
+        <p class="pm-about" id="pm-about">—</p>
+      </div>
+
+      <div class="pm-section">
+        <div class="pm-section-title">Informações</div>
+        <div class="pm-info-grid">
+          <div class="pm-info-item"><div class="ii-label">Localização</div><div class="ii-val" id="pm-loc">—</div></div>
+          <div class="pm-info-item"><div class="ii-label">Disponibilidade</div><div class="ii-val" id="pm-avail">—</div></div>
+          <div class="pm-info-item"><div class="ii-label">Raio de atendimento</div><div class="ii-val" id="pm-raio">—</div></div>
+          <div class="pm-info-item"><div class="ii-label">Membro desde</div><div class="ii-val" id="pm-since">—</div></div>
+        </div>
+      </div>
+
+      <div class="pm-section">
+        <div class="pm-section-title">Portfólio de trabalhos</div>
+        <div class="pm-portfolio" id="pm-portfolio"></div>
+      </div>
+
+    </div>
+
+    <div class="pm-footer">
+      <button class="btn-whats" id="btn-whats" onclick="openWhatsApp()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Entrar em contato via WhatsApp
+      </button>
+      <button class="btn-share" onclick="shareProfile()">🔗 Compartilhar</button>
+      <div class="pm-lgpd-note">
+        Ao entrar em contato, você concorda com nossa <a href="privacidade.html">Política de Privacidade</a>. O WhatsApp do profissional é compartilhado apenas para fins de contratação.
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-  // Cookie banner
-  function acceptCookies() {
-    localStorage.setItem('cookies-consent', 'accepted');
-    document.getElementById('cookie-banner').style.transform = 'translateY(110%)';
+// ── DADOS DOS PROFISSIONAIS ──
+const profissionais = [
+  {
+    id: 1, emoji: '👷', nome: 'Carlos Eduardo', role: 'Eletricista Residencial & Industrial',
+    cat: 'Elétrica', cidade: 'São Paulo', estado: 'SP', disponivel: true, featured: true,
+    rating: 4.9, reviews: 247, preco: 'R$120', tipoPreco: 'por hora',
+    tags: ['Instalação Elétrica','SPDA (Para-raios)','Quadros Elétricos','Laudo Elétrico','Tomadas & Interruptores','Iluminação LED'],
+    sobre: 'Eletricista com 12 anos de experiência em instalações residenciais e industriais. Trabalho com NR-10, emito laudos e ART. Atendo São Paulo e Grande SP. Pontual, organizado e com garantia em todos os serviços.',
+    jobs: '500+', exp: '12 anos', resp: '~30min', rate: '99%',
+    raio: 'Grande São Paulo', since: 'Janeiro 2023',
+    portfolio: ['⚡','🔌','💡'],
+    whats: '5511999990001'
+  },
+  {
+    id: 2, emoji: '🔨', nome: 'Ana Souza', role: 'Pedreiro & Reformas Completas',
+    cat: 'Construção', cidade: 'Rio de Janeiro', estado: 'RJ', disponivel: true, featured: false,
+    rating: 4.8, reviews: 189, preco: 'R$180', tipoPreco: 'por dia',
+    tags: ['Alvenaria','Revestimento','Piso Cerâmico','Massa Corrida','Reboco','Reforma de Banheiro'],
+    sobre: 'Especialista em reformas residenciais há 8 anos. Faço orçamento sem compromisso e visita gratuita. Trabalho com equipe própria para agilizar a obra. Referências disponíveis mediante solicitação.',
+    jobs: '320+', exp: '8 anos', resp: '~2h', rate: '97%',
+    raio: 'Rio de Janeiro e Niterói', since: 'Março 2023',
+    portfolio: ['🏗️','🧱','🪟'],
+    whats: '5521999990002'
+  },
+  {
+    id: 3, emoji: '🎨', nome: 'Roberto Lima', role: 'Pintor Profissional — Texturas & Acabamentos',
+    cat: 'Pintura', cidade: 'Belo Horizonte', estado: 'MG', disponivel: false, featured: true,
+    rating: 4.6, reviews: 312, preco: 'R$90', tipoPreco: 'por hora',
+    tags: ['Textura Acrílica','Grafiato','Marmorato','Epóxi','Pintura Interna','Pintura Externa'],
+    sobre: 'Pintor profissional com foco em acabamentos especiais e texturas decorativas. Atuo no mercado desde 2010. Utilizo materiais de primeira linha e entrego o ambiente limpo ao final do serviço.',
+    jobs: '400+', exp: '14 anos', resp: '~4h', rate: '96%',
+    raio: 'Belo Horizonte e RMBH', since: 'Fevereiro 2023',
+    portfolio: ['🎨','🖌️','🏠'],
+    whats: '5531999990003'
+  },
+  {
+    id: 4, emoji: '🪵', nome: 'Fernanda Costa', role: 'Marceneira — Móveis Planejados',
+    cat: 'Marcenaria', cidade: 'Curitiba', estado: 'PR', disponivel: true, featured: false,
+    rating: 5.0, reviews: 98, preco: 'R$250', tipoPreco: 'por projeto',
+    tags: ['MDF','Cozinha Planejada','Closet','Móveis sob Medida','Dormitório','Home Office'],
+    sobre: 'Marceneira formada com especialização em design de interiores. Projeto, fabrico e instalo móveis planejados com prazo e qualidade garantidos. Visita técnica gratuita para orçamento.',
+    jobs: '150+', exp: '6 anos', resp: '~1h', rate: '100%',
+    raio: 'Curitiba e Região Metropolitana', since: 'Junho 2023',
+    portfolio: ['🪵','🛋️','🚪'],
+    whats: '5541999990004'
+  },
+  {
+    id: 5, emoji: '🔧', nome: 'Marcos Silva', role: 'Encanador & Hidráulica Geral',
+    cat: 'Encanamento', cidade: 'Porto Alegre', estado: 'RS', disponivel: true, featured: false,
+    rating: 4.7, reviews: 165, preco: 'R$100', tipoPreco: 'por hora',
+    tags: ['Vazamentos','Aquecedor a Gás','Esgoto','Desentupimento','Instalação Hidráulica','Caixa d\'Água'],
+    sobre: 'Encanador com 9 anos de experiência. Atendo emergências 24h. Localizo vazamentos invisíveis com equipamento moderno. Orçamento no local, sem surpresas. Trabalho com nota fiscal.',
+    jobs: '280+', exp: '9 anos', resp: '~1h', rate: '97%',
+    raio: 'Porto Alegre e Grande POA', since: 'Abril 2023',
+    portfolio: ['🔧','💧','🚿'],
+    whats: '5551999990005'
+  },
+  {
+    id: 6, emoji: '❄️', nome: 'Juliana Matos', role: 'Técnica em Refrigeração & AC',
+    cat: 'Ar-Condicionado', cidade: 'Salvador', estado: 'BA', disponivel: true, featured: true,
+    rating: 4.9, reviews: 203, preco: 'R$130', tipoPreco: 'por serviço',
+    tags: ['Instalação Split','Higienização','Manutenção Preventiva','Gás Refrigerante','Multi-split','VRF'],
+    sobre: 'Técnica certificada em refrigeração e ar-condicionado. Atendo residências, comércios e indústrias. Trabalho com todas as marcas. Emito relatório técnico após cada serviço. Garantia de 6 meses.',
+    jobs: '350+', exp: '7 anos', resp: '~2h', rate: '99%',
+    raio: 'Salvador e Região Metropolitana', since: 'Janeiro 2023',
+    portfolio: ['❄️','🌡️','🔩'],
+    whats: '5571999990006'
   }
-  function rejectCookies() {
-    localStorage.setItem('cookies-consent', 'essential');
-    document.getElementById('cookie-banner').style.transform = 'translateY(110%)';
+];
+
+let currentProfId = null;
+
+function openProfModal(id) {
+  const p = profissionais.find(x => x.id === id);
+  if (!p) return;
+  currentProfId = id;
+
+  // Header
+  document.getElementById('pm-avatar').textContent = p.emoji;
+  document.getElementById('pm-name').textContent = p.nome;
+  document.getElementById('pm-role').textContent = p.role;
+
+  // Rating stars
+  const fullStars = Math.floor(p.rating);
+  const stars = '★'.repeat(fullStars) + (p.rating % 1 >= 0.5 ? '½' : '') + '☆'.repeat(5 - Math.ceil(p.rating));
+  document.getElementById('pm-stars').textContent = '★'.repeat(fullStars) + '☆'.repeat(5 - fullStars);
+  document.getElementById('pm-rating-num').textContent = p.rating;
+  document.getElementById('pm-reviews').textContent = `(${p.reviews} avaliações)`;
+
+  // Badges
+  const availClass = p.disponivel ? 'pm-badge-avail-yes' : 'pm-badge-avail-no';
+  const availText = p.disponivel ? '● Disponível' : '⏸ Ocupado';
+  document.getElementById('pm-badges').innerHTML = `
+    <span class="pm-badge pm-badge-cat">${p.cat}</span>
+    <span class="pm-badge ${availClass}">${availText}</span>
+    ${p.featured ? '<span class="pm-badge pm-badge-feat">⭐ Destaque</span>' : ''}
+  `;
+
+  // Stats
+  document.getElementById('pm-stat-jobs').textContent = p.jobs;
+  document.getElementById('pm-stat-exp').textContent = p.exp;
+  document.getElementById('pm-stat-resp').textContent = p.resp;
+  document.getElementById('pm-stat-rate').textContent = p.rate;
+
+  // Price
+  document.getElementById('pm-price').textContent = p.preco;
+  document.getElementById('pm-price-label').textContent = p.tipoPreco;
+
+  // Tags
+  document.getElementById('pm-tags').innerHTML = p.tags.map(t =>
+    `<span class="pm-tag">${t}</span>`
+  ).join('');
+
+  // Sobre
+  document.getElementById('pm-about').textContent = p.sobre;
+
+  // Info grid
+  document.getElementById('pm-loc').textContent = `📍 ${p.cidade}, ${p.estado}`;
+  document.getElementById('pm-avail').textContent = p.disponivel ? '✅ Disponível agora' : '⏸ Agendamento';
+  document.getElementById('pm-raio').textContent = p.raio;
+  document.getElementById('pm-since').textContent = p.since;
+
+  // Portfolio
+  document.getElementById('pm-portfolio').innerHTML = p.portfolio.map(e =>
+    `<div class="pm-port-item">${e}</div>`
+  ).join('');
+
+  // Open
+  document.getElementById('prof-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProfModal() {
+  document.getElementById('prof-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openWhatsApp() {
+  const p = profissionais.find(x => x.id === currentProfId);
+  if (!p) return;
+  const msg = encodeURIComponent(`Olá ${p.nome.split(' ')[0]}! Vi seu perfil no Minha Mão de Obra e gostaria de um orçamento para ${p.cat.toLowerCase()}. Pode me atender?`);
+  window.open(`https://wa.me/${p.whats}?text=${msg}`, '_blank');
+}
+
+function shareProfile() {
+  const p = profissionais.find(x => x.id === currentProfId);
+  if (!p) return;
+  if (navigator.share) {
+    navigator.share({ title: p.nome, text: `Confira o perfil de ${p.nome} no Minha Mão de Obra!`, url: window.location.href });
+  } else {
+    navigator.clipboard?.writeText(window.location.href);
+    alert('Link copiado!');
   }
-  if (localStorage.getItem('cookies-consent')) {
-    document.getElementById('cookie-banner').style.transform = 'translateY(110%)';
-  }
+}
+
+// Fechar com ESC
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfModal(); });
+
+// Conectar botões Contratar aos profissionais
+document.querySelectorAll('.btn-contact').forEach((btn, i) => {
+  btn.onclick = (e) => { e.stopPropagation(); openProfModal(i + 1); };
+});
+// Cookie banner
+function acceptCookies() {
+  localStorage.setItem('cookies-consent', 'accepted');
+  document.getElementById('cookie-banner').style.transform = 'translateY(110%)';
+}
+function rejectCookies() {
+  localStorage.setItem('cookies-consent', 'essential');
+  document.getElementById('cookie-banner').style.transform = 'translateY(110%)';
+}
+if (localStorage.getItem('cookies-consent')) {
+  document.getElementById('cookie-banner').style.transform = 'translateY(110%)';
+}
 </script>
 
 </body>
