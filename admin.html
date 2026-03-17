@@ -354,9 +354,187 @@ select.field-select {
   padding: 12px 16px; color: var(--text);
   font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none;
 }
+
+/* ── MOBILE HEADER ── */
+.mobile-header {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+  background: var(--dark2); border-bottom: 1px solid var(--border);
+  padding: 0 16px; height: 56px;
+  align-items: center; justify-content: space-between;
+}
+.mobile-logo { font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--amber-light); }
+.btn-hamburger {
+  background: transparent; border: none; cursor: pointer;
+  display: flex; flex-direction: column; gap: 5px; padding: 6px;
+}
+.btn-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: all 0.3s;
+}
+.btn-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.btn-hamburger.open span:nth-child(2) { opacity: 0; }
+.btn-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ── SIDEBAR OVERLAY (mobile) ── */
+.sidebar-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6); z-index: 49;
+}
+.sidebar-overlay.open { display: block; }
+
+/* ── EDIT/DEL BUTTONS IN TABLE ── */
+.btn-edit {
+  background: rgba(74,143,224,0.12); border: 1px solid rgba(74,143,224,0.2);
+  color: #6aafd6; border-radius: 8px; padding: 6px 10px;
+  font-size: 0.82rem; cursor: pointer; transition: all 0.2s;
+}
+.btn-edit:hover { background: rgba(74,143,224,0.2); }
+.btn-del {
+  background: rgba(224,82,82,0.12); border: 1px solid rgba(224,82,82,0.2);
+  color: var(--red); border-radius: 8px; padding: 6px 10px;
+  font-size: 0.82rem; cursor: pointer; transition: all 0.2s;
+}
+.btn-del:hover { background: rgba(224,82,82,0.2); }
+
+/* ────────────────────────────
+   RESPONSIVO — TABLET (≤900px)
+──────────────────────────────*/
+@media (max-width: 900px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .chart-row { grid-template-columns: 1fr; }
+  .main { padding: 24px 20px; }
+}
+
+/* ────────────────────────────
+   RESPONSIVO — MOBILE (≤768px)
+──────────────────────────────*/
+@media (max-width: 768px) {
+
+  /* Header mobile visível */
+  .mobile-header { display: flex; }
+
+  /* Sidebar vira gaveta deslizante */
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 50;
+  }
+  .sidebar.open { transform: translateX(0); }
+
+  /* Conteúdo principal ocupa tudo */
+  .main {
+    margin-left: 0;
+    padding: 76px 16px 24px;
+  }
+
+  /* Login ajustado */
+  .login-box { padding: 32px 24px; margin: 16px; }
+
+  /* KPIs em 2 colunas compactas */
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .kpi-card { padding: 16px; }
+  .kpi-num { font-size: 1.5rem; }
+
+  /* Topbar empilhado */
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .page-title { font-size: 1.4rem; }
+
+  /* Tabelas — scroll horizontal */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+  }
+  .table-wrap::before {
+    content: '← deslize para ver mais →';
+    display: block;
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 6px;
+    background: var(--dark3);
+  }
+  table { min-width: 640px; }
+
+  /* Header da tabela */
+  .table-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .table-actions { flex-wrap: wrap; }
+  .search-input { width: 100%; }
+
+  /* Charts em coluna única */
+  .chart-row { grid-template-columns: 1fr; gap: 14px; }
+  .bar-chart { height: 80px; }
+
+  /* Modal ocupa tela inteira no mobile */
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal {
+    border-radius: 20px 20px 0 0;
+    max-width: 100%;
+    max-height: 92vh;
+    padding: 28px 20px;
+  }
+  .modal-grid { grid-template-columns: 1fr; }
+  .modal-grid .full { grid-column: 1; }
+  .confirm-modal {
+    border-radius: 20px 20px 0 0;
+    max-width: 100%;
+    padding: 28px 24px;
+  }
+
+  /* Filtros de demandas em coluna */
+  #page-demandas > div[style*="display:flex"] {
+    flex-direction: column;
+  }
+
+  /* Toast na parte inferior centralizado */
+  .toast {
+    left: 16px; right: 16px; bottom: 16px;
+    transform: translateY(80px);
+  }
+  .toast.show { transform: translateY(0); }
+}
+
+/* ─────────────────────────────
+   RESPONSIVO — PEQUENO (≤480px)
+───────────────────────────────*/
+@media (max-width: 480px) {
+  .kpi-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .kpi-card { padding: 14px 12px; }
+  .kpi-num { font-size: 1.3rem; }
+  .kpi-label { font-size: 0.7rem; }
+  .main { padding: 68px 12px 20px; }
+  .page-title { font-size: 1.2rem; }
+  .modal { padding: 24px 16px; }
+}
 </style>
 </head>
 <body>
+
+<!-- MOBILE HEADER -->
+<div class="mobile-header" id="mobile-header" style="display:none">
+  <div class="mobile-logo">Minha Mão de Obra</div>
+  <button class="btn-hamburger" id="btn-hamburger" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
 
 <!-- LOGIN -->
 <div id="login-screen">
@@ -953,6 +1131,7 @@ function doLogin() {
   if (u === 'admin' && p === '1234') {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('admin-screen').style.display = 'block';
+    document.getElementById('mobile-header').style.display = 'flex';
     renderAll();
   } else {
     document.getElementById('login-error').style.display = 'block';
@@ -963,14 +1142,40 @@ document.getElementById('inp-pass').addEventListener('keydown', e => { if(e.key=
 function doLogout() {
   document.getElementById('login-screen').style.display = 'flex';
   document.getElementById('admin-screen').style.display = 'none';
+  document.getElementById('mobile-header').style.display = 'none';
+  closeSidebar();
 }
 
 // ── NAVIGATION ──
+// ── MOBILE SIDEBAR ──
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const btn = document.getElementById('btn-hamburger');
+  const isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    closeSidebar();
+  } else {
+    sidebar.classList.add('open');
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeSidebar() {
+  document.querySelector('.sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('open');
+  document.getElementById('btn-hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 function showPage(page, btn) {
   document.querySelectorAll('.panel-page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
   document.getElementById('page-' + page).classList.add('active');
   btn.classList.add('active');
+  // Fecha sidebar no mobile ao navegar
+  if (window.innerWidth <= 768) closeSidebar();
 }
 
 // ── RENDER ──

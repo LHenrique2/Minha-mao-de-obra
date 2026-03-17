@@ -72,6 +72,49 @@
   }
   .btn-nav:hover { background: var(--amber-light); transform: translateY(-1px); }
 
+  /* HAMBURGER */
+  .btn-hamburger-nav {
+    display: none; flex-direction: column; gap: 5px;
+    background: transparent; border: none; cursor: pointer; padding: 6px;
+  }
+  .btn-hamburger-nav span {
+    display: block; width: 22px; height: 2px;
+    background: rgba(255,255,255,0.8); border-radius: 2px; transition: all 0.3s;
+  }
+  .btn-hamburger-nav.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .btn-hamburger-nav.open span:nth-child(2) { opacity: 0; }
+  .btn-hamburger-nav.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+  /* MOBILE MENU DRAWER */
+  .mobile-menu {
+    position: fixed; top: 58px; left: 0; right: 0; bottom: 0;
+    background: rgba(26,18,8,0.98); backdrop-filter: blur(16px);
+    z-index: 99; display: flex; flex-direction: column;
+    padding: 28px 6%; gap: 6px;
+    transform: translateX(100%); transition: transform 0.3s ease;
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu a, .mobile-menu button {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 1.1rem; font-weight: 600; padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: transparent; border-top: none; border-left: none; border-right: none;
+    text-align: left; cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover, .mobile-menu button:hover { color: var(--amber-light); }
+  .mobile-menu .mm-cta {
+    margin-top: 20px; background: var(--amber); color: #fff;
+    border-radius: 100px; padding: 15px; text-align: center;
+    font-weight: 700; border: none; font-size: 1rem;
+  }
+  .mobile-menu .mm-cta:hover { background: var(--amber-light); }
+
+  @media (max-width: 860px) {
+    .btn-hamburger-nav { display: flex; }
+    nav > ul, nav > div { display: none !important; }
+    nav { height: 58px; }
+  }
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
@@ -875,6 +918,125 @@
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .section-header { flex-direction: column; align-items: flex-start; }
   }
+
+/* ═══════════════════════════
+   RESPONSIVO COMPLETO — MOBILE
+═══════════════════════════ */
+
+/* NAV MOBILE */
+@media (max-width: 860px) {
+  nav { padding: 0 4%; height: 58px; }
+  .nav-logo { font-size: 1.1rem; }
+  nav > div:last-child .btn-nav:not(:last-child) { display: none; }
+  nav > div[style*="gap:10px"] a[href="privacidade.html"] { display: none; }
+}
+
+/* HERO */
+@media (max-width: 640px) {
+  .hero { padding: 90px 5% 48px; }
+  .hero h1 { font-size: 2rem; }
+  .hero-search { flex-direction: column; gap: 10px; border-radius: 16px; padding: 16px; }
+  .hero-search input { font-size: 0.92rem; }
+  .btn-search { width: 100%; justify-content: center; border-radius: 12px; }
+  .hero-stats { gap: 20px; }
+  .stat-num { font-size: 1.6rem; }
+}
+
+/* CATEGORIES */
+@media (max-width: 860px) {
+  .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+}
+@media (max-width: 480px) {
+  .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .cat-card { padding: 16px 10px; }
+  .cat-icon { font-size: 1.8rem; }
+  .cat-name { font-size: 0.78rem; }
+}
+
+/* LOCATION FILTER */
+@media (max-width: 640px) {
+  .location-filter-bar { padding: 14px; gap: 10px; }
+  .lf-group { min-width: calc(50% - 5px); }
+  .lf-btn-gps { width: 100%; justify-content: center; }
+}
+
+/* PROFESSIONALS GRID */
+@media (max-width: 900px) {
+  .pros-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .pros-grid { grid-template-columns: 1fr; }
+  .section-filters { flex-wrap: wrap; gap: 6px; }
+  .filter-btn { font-size: 0.78rem; padding: 7px 14px; }
+}
+
+/* HOW IT WORKS */
+@media (max-width: 700px) {
+  .steps-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+@media (max-width: 480px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}
+
+/* REVIEWS */
+@media (max-width: 860px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+}
+
+/* FREE PLAN */
+@media (max-width: 860px) {
+  .free-inner { grid-template-columns: 1fr; }
+  .free-right { display: none; }
+}
+
+/* PLANS */
+@media (max-width: 860px) {
+  .plans-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .plan-card.featured { transform: none; }
+}
+@media (max-width: 480px) {
+  .billing-toggle { flex-direction: row; width: 100%; }
+  .toggle-btn { flex: 1; text-align: center; }
+}
+
+/* CTA */
+@media (max-width: 560px) {
+  .cta-section { padding: 60px 5%; }
+  .cta-section h2 { font-size: 1.6rem; }
+  .cta-btns { flex-direction: column; align-items: stretch; }
+  .btn-cta-main, .btn-cta-dark { text-align: center; }
+}
+
+/* FOOTER */
+@media (max-width: 640px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-brand { max-width: 100%; }
+}
+
+/* PROFILE MODAL */
+@media (max-width: 640px) {
+  .prof-overlay { align-items: flex-end; padding: 0; }
+  .prof-modal { border-radius: 24px 24px 0 0; max-height: 92vh; }
+  .pm-header { padding: 24px 20px 18px; border-radius: 24px 24px 0 0; }
+  .pm-top { gap: 12px; }
+  .pm-avatar { width: 60px; height: 60px; font-size: 1.8rem; }
+  .pm-name { font-size: 1.2rem; }
+  .pm-stats { gap: 0; }
+  .pm-stat-val { font-size: 1.1rem; }
+  .pm-body { padding: 20px 16px; }
+  .pm-info-grid { grid-template-columns: 1fr 1fr; }
+  .pm-portfolio { grid-template-columns: repeat(3, 1fr); }
+  .pm-footer { padding: 16px 16px 24px; flex-direction: column; }
+  .btn-whats { min-width: unset; width: 100%; }
+  .btn-share { width: 100%; text-align: center; }
+}
+
+/* COOKIE BANNER */
+@media (max-width: 560px) {
+  #cookie-banner { flex-direction: column; gap: 12px; padding: 16px; }
+  #cookie-banner > div:last-child { width: 100%; display: flex; gap: 8px; }
+  #cookie-banner button { flex: 1; }
+}
 </style>
 </head>
 <body>
@@ -897,9 +1059,23 @@
     <button class="btn-nav" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.65);font-weight:500;" onclick="location.href='admin.html'">Entrar</button>
     <button class="btn-nav" onclick="location.href='cadastro.html'">Cadastre-se Grátis</button>
   </div>
+  <button class="btn-hamburger-nav" id="nav-hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#categorias" onclick="closeMobileMenu()">Categorias</a>
+  <a href="#profissionais" onclick="closeMobileMenu()">Profissionais</a>
+  <a href="demandas.html">📋 Demandas</a>
+  <a href="#como-funciona" onclick="closeMobileMenu()">Como Funciona</a>
+  <a href="#planos" onclick="closeMobileMenu()">Planos</a>
+  <a href="#avaliacoes" onclick="closeMobileMenu()">Avaliações</a>
+  <a href="privacidade.html">🔒 Privacidade</a>
+  <button onclick="location.href='admin.html'">Entrar</button>
+  <button class="mm-cta" onclick="location.href='cadastro.html'">Cadastre-se Grátis →</button>
+</div>
 <section class="hero">
   <div class="hero-badge">✦ +12.000 profissionais cadastrados</div>
   <h1>O profissional certo<br>para <em>cada serviço</em></h1>
@@ -2367,6 +2543,22 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfMod
 document.querySelectorAll('.btn-contact').forEach((btn, i) => {
   btn.onclick = (e) => { e.stopPropagation(); openProfModal(i + 1); };
 });
+// Mobile menu
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('nav-hamburger');
+  const isOpen = menu.classList.contains('open');
+  if (isOpen) { closeMobileMenu(); }
+  else { menu.classList.add('open'); btn.classList.add('open'); document.body.style.overflow='hidden'; }
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+  document.body.style.overflow='';
+}
+// Close menu on resize to desktop
+window.addEventListener('resize', () => { if(window.innerWidth > 860) closeMobileMenu(); });
+
 // Cookie banner
 function acceptCookies() {
   localStorage.setItem('cookies-consent', 'accepted');
